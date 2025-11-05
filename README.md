@@ -7,7 +7,7 @@ Aprender sobre integración de sistemas: Entender cómo las APIs permiten que di
 Desarrollar habilidades técnicas: Familiarizarse con conceptos como peticiones HTTP, JSON, endpoints, y autenticación
 
 # integrantes:
-**Maria Luz Ubiarco Montes 3D**
+**Maria Luz Ubiarco Montes 3D** ,
 **Oscar Adrian Medina Hernandez 3D**
 
 
