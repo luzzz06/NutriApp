@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Informe Nutricional{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+          crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container my-4">
+        <h1 class="text-center">
+          {% block titulo %}Investigación de Mercado: Aplicaciones Nutricionales{% endblock %}
+        </h1>
+      </div>
+
+
+      <div class="p-5 bg-danger-subtle text-dark text-center rounded-3 shadow">
+        <h1>Explora sobre las APIS Nutricionales</h1>
+      </div>
+
+
+      <nav class="navbar navbar-expand-lg bg-danger-subtle mt-4 shadow-sm">
+        <div class="container-fluid">
+          <a class="navbar-brand fw-bold text-dark" href="{{ url_for('base') }}">NutriVida</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                  data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" 
+                  aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('base') }}">Menú</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('inicio') }}">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ url_for('registro') }}">Registro</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="container text-center my-4">
+        <img src="{{ url_for('static', filename='img/static/collagesaludable.jpg') }}"
+        alt="Imagen sobre nutrición" 
+        class="img-fluid rounded shadow" />
+      </div>
+    </header>
+
+
+    <main class="container-fluid bg-light py-4">
+      <section>
+        {% block content %}
+        <div class="text-center py-5">
+          <h2 class="fw-bold text-danger">Bienvenido al Panel Nutricional</h2>
+          <p class="text-muted">Selecciona una opción del menú para continuar.</p>
+        </div>
+        {% endblock %}
+      </section>
+    </main>
+
+
+    <footer class="bg-dark text-white text-center py-4 mt-4">
+      <div class="container">
+        <p class="mb-1">Ubiarco Montes Maria Luz - Grupo: 3-D</p>
+        <p class="mb-1">Medina Hernández Oscar Adrián - Grupo: 3-D</p>
+        <p class="mb-0">Estudiantes del Cetis61 - 15 años</p>
+      </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+            crossorigin="anonymous"></script>
+  </body>
+</html>
+

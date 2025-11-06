@@ -1,0 +1,113 @@
+{% extends "base2.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+
+
+    <div class="text-center mb-4">
+        <h1>Investigación de Mercado: Aplicaciones Nutricionales</h1>
+        <p class="text-muted">Proyecto de investigación y diseño de encuesta</p>
+    </div>
+
+    <section class="mb-5">
+        <h3>Introducción</h3>
+        <p>
+            Este informe presenta un análisis de mercado de aplicaciones nutricionales existentes, 
+            el diseño de una encuesta para usuarios potenciales y una guía práctica para recoger y analizar datos. 
+            El objetivo es identificar funcionalidades valoradas, problemas comunes y oportunidades para 
+            desarrollar una nueva aplicación nutricional competitiva.
+        </p>
+    </section>
+
+
+    <section class="mb-5">
+        <h3>Objetivos de la investigación</h3>
+        <ul>
+            <li>Analizar aplicaciones nutricionales líderes y comparar sus funcionalidades, modelos de negocio y UX.</li>
+            <li>Diseñar una encuesta (mínimo 15 preguntas) para recoger datos de usuarios potenciales.</li>
+            <li>Proponer recomendaciones y oportunidades para el desarrollo de la futura app.</li>
+        </ul>
+    </section>
+
+
+    <section class="mb-5">
+        <h3>Metodología utilizada</h3>
+        <ol>
+            <li>Revisión documental y análisis de fuentes oficiales y reseñas actualizadas.</li>
+            <li>Diseño de encuesta con preguntas cerradas y abiertas.</li>
+            <li>Análisis cuantitativo y cualitativo de resultados (gráficos, tablas, resumen de hallazgos).</li>
+        </ol>
+    </section>
+
+
+    <section class="mb-5">
+        <h3>Comparativa de Aplicaciones Analizadas</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Aplicación</th>
+                        <th>Funcionalidades principales</th>
+                        <th>Modelo de negocio</th>
+                        <th>Público objetivo</th>
+                        <th>Punto fuerte clave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MyFitnessPal</td>
+                        <td>Base de datos extensa, logging, integraciones</td>
+                        <td>Freemium</td>
+                        <td>Usuarios generales que cuentan calorías</td>
+                        <td>Base de datos + integraciones</td>
+                    </tr>
+                    <tr>
+                        <td>FatSecret</td>
+                        <td>Tracking básico, comunidad, escaneo de código</td>
+                        <td>Gratis + Premium</td>
+                        <td>Usuarios con presupuesto limitado</td>
+                        <td>Gratuito y comunidad</td>
+                    </tr>
+                    <tr>
+                        <td>Cronometer</td>
+                        <td>Seguimiento de micronutrientes, alta precisión</td>
+                        <td>Freemium / Gold</td>
+                        <td>Usuarios y profesionales que buscan precisión</td>
+                        <td>Precisión nutricional</td>
+                    </tr>
+                    <tr>
+                        <td>YAZIO</td>
+                        <td>Planes guiados, ayuno intermitente, recetas</td>
+                        <td>Freemium / PRO</td>
+                        <td>Usuarios que buscan planes personalizados</td>
+                        <td>Planes y experiencia de usuario</td>
+                    </tr>
+                    <tr>
+                        <td>Lose It!</td>
+                        <td>Objetivos, retos, buen onboarding</td>
+                        <td>Freemium</td>
+                        <td>Usuarios que quieren perder peso</td>
+                        <td>Onboarding y retención</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+    <section class="mb-5">
+        <h3>Conclusiones y Recomendaciones</h3>
+        <ul>
+            <li>Construir una experiencia minimalista para el registro diario, con opciones avanzadas para usuarios técnicos.</li>
+            <li>Implementar barcode scanner + reconocimiento por foto para reducir fricción.</li>
+            <li>Ofrecer análisis de micronutrientes como característica premium.</li>
+            <li>Priorizar privacidad: explicar uso de datos y ofrecer opciones de exportación/borrado.</li>
+            <li>Probar modelos de monetización: suscripción mensual, plan anual y compras in-app por coaching.</li>
+        </ul>
+    </section>
+
+</div>
+{% endblock %}
+

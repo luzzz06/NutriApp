@@ -1,0 +1,65 @@
+{% extends "base2.html" %}
+
+{% block title %}Registro | NutriVida{% endblock %}
+
+{% block titulo %}Formulario de Registro Nutricional{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow border-0 rounded-4 bg-warning-subtle">
+        <div class="card-body p-4 p-md-5 text-center">
+
+          <img src="https://cdn-icons-png.flaticon.com/512/1046/1046874.png" 
+          alt="Logo nutrición" width="80" class="mb-3">
+          <h3 class="fw-bold text-dark">Crea tu cuenta</h3>
+          <p class="text-muted mb-4">Empieza tu camino hacia una vida más saludable 🍎</p>
+
+
+          <form action="{{ url_for('inicio') }}" method="get">
+            <div class="mb-3 text-start">
+              <label class="form-label fw-semibold">Nombre completo</label>
+              <input type="text" class="form-control form-control-lg" placeholder="nombre completo" required>
+            </div>
+
+            <div class="mb-3 text-start">
+              <label class="form-label fw-semibold">Correo electrónico</label>
+              <input type="email" class="form-control form-control-lg" placeholder="email@gmail.com" required>
+            </div>
+
+            <div class="mb-3 text-start">
+              <label class="form-label fw-semibold">Contraseña</label>
+              <input type="password" class="form-control form-control-lg" placeholder="contraseña" required>
+            </div>
+
+            <div class="mb-4 text-start">
+              <label class="form-label fw-semibold">Objetivo principal</label>
+              <select class="form-select form-select-lg" required>
+                <option selected disabled>Selecciona tu objetivo</option>
+                <option>Bajar de peso</option>
+                <option>Ganar masa muscular</option>
+                <option>Mantenerme saludable</option>
+                <option>Mejorar mi rendimiento</option>
+              </select>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-warning btn-lg text-dark fw-semibold">
+                Registrarme
+              </button>
+            </div>
+          </form>
+
+          <p class="text-muted mt-4 mb-0">
+            ¿Ya tienes una cuenta?
+            <a href="{{ url_for('inicio') }}" class="text-dark fw-semibold text-decoration-none">Inicia sesión</a>
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
