@@ -1,4 +1,4 @@
-{% extends "base2.html" %}
+{% extends "base.html" %}
 
 {% block title %}Registro | NutriVida{% endblock %}
 
@@ -7,31 +7,75 @@
 {% block content %}
 <div class="container my-5">
   <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
+    <div class="col-md-8 col-lg-7">
       <div class="card shadow border-0 rounded-4 bg-warning-subtle">
         <div class="card-body p-4 p-md-5 text-center">
 
-          <img src="https://cdn-icons-png.flaticon.com/512/1046/1046874.png" 
-          alt="Logo nutrición" width="80" class="mb-3">
-          <h3 class="fw-bold text-dark">Crea tu cuenta</h3>
-          <p class="text-muted mb-4">Empieza tu camino hacia una vida más saludable 🍎</p>
 
+          <h3 class="fw-bold text-dark">Crea tu cuenta</h3>
+          <p class="text-muted mb-4">Empieza tu camino hacia una vida más saludable </p>
 
           <form action="{{ url_for('inicio') }}" method="get">
+            
+
             <div class="mb-3 text-start">
-              <label class="form-label fw-semibold">Nombre completo</label>
-              <input type="text" class="form-control form-control-lg" placeholder="nombre completo" required>
+              <label class="form-label fw-semibold">Nombre</label>
+              <input type="text" class="form-control form-control-lg" placeholder="Escribe tu nombre" required>
+            </div>
+
+            <div class="mb-3 text-start">
+              <label class="form-label fw-semibold">Apellidos</label>
+              <input type="text" class="form-control form-control-lg" placeholder="Escribe tus apellidos" required>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3 text-start">
+                <label class="form-label fw-semibold">Edad</label>
+                <input type="number" class="form-control form-control-lg" placeholder="Escribe tu edad" required>
+              </div>
+              <div class="col-md-6 mb-3 text-start">
+                <label class="form-label fw-semibold">Sexo</label>
+                <select class="form-select form-select-lg" required>
+                  <option selected disabled>Selecciona tu sexo</option>
+                  <option>Femenino</option>
+                  <option>Masculino</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 mb-3 text-start">
+                <label class="form-label fw-semibold">Peso (kg)</label>
+                <input type="number" class="form-control form-control-lg" placeholder="Escribe tu peso" required>
+              </div>
+              <div class="col-md-4 mb-3 text-start">
+                <label class="form-label fw-semibold">Altura (cm)</label>
+                <input type="number" class="form-control form-control-lg" placeholder="Escribe tu altura" required>
+              </div>
+              <div class="col-md-4 mb-3 text-start">
+                <label class="form-label fw-semibold">Nivel de actividad</label>
+                <select class="form-select form-select-lg" required>
+                  <option selected disabled>Selecciona</option>
+                  <option>Sedentario</option>
+                  <option>Ligero</option>
+                  <option>Moderado</option>
+                  <option>Activo</option>
+                  <option>Muy activo</option>
+                </select>
+              </div>
             </div>
 
             <div class="mb-3 text-start">
               <label class="form-label fw-semibold">Correo electrónico</label>
-              <input type="email" class="form-control form-control-lg" placeholder="email@gmail.com" required>
+              <input type="email" class="form-control form-control-lg" placeholder="Escribe tu correo electrónico" required>
             </div>
 
             <div class="mb-3 text-start">
               <label class="form-label fw-semibold">Contraseña</label>
-              <input type="password" class="form-control form-control-lg" placeholder="contraseña" required>
+              <input type="password" class="form-control form-control-lg" placeholder="Escribe una contraseña segura" required>
             </div>
+
 
             <div class="mb-4 text-start">
               <label class="form-label fw-semibold">Objetivo principal</label>
@@ -39,8 +83,43 @@
                 <option selected disabled>Selecciona tu objetivo</option>
                 <option>Bajar de peso</option>
                 <option>Ganar masa muscular</option>
-                <option>Mantenerme saludable</option>
-                <option>Mejorar mi rendimiento</option>
+                <option>Mantener peso</option>
+                <option>Mejorar digestión</option>
+                <option>Controlar una condición (diabetes, hipertensión, etc.)</option>
+              </select>
+            </div>
+
+
+            <div class="mb-3 text-start">
+              <label class="form-label fw-semibold">Alergias o intolerancias</label>
+              <input type="text" class="form-control form-control-lg" placeholder="Escribe si tienes alguna alergia o intolerancia">
+            </div>
+
+            <div class="mb-3 text-start">
+              <label class="form-label fw-semibold">Tipo de dieta o preferencia</label>
+              <select class="form-select form-select-lg">
+                <option selected disabled>Selecciona una opción</option>
+                <option>Sin preferencia</option>
+                <option>Vegana</option>
+                <option>Vegetariana</option>
+                <option>Keto</option>
+                <option>Mediterránea</option>
+              </select>
+            </div>
+
+            <div class="mb-3 text-start">
+              <label class="form-label fw-semibold">Alimentos que no te gustan</label>
+              <input type="text" class="form-control form-control-lg" placeholder="Escribe los alimentos que no te gustan">
+            </div>
+
+
+            <div class="mb-4 text-start">
+              <label class="form-label fw-semibold">Nivel de experiencia en cocina</label>
+              <select class="form-select form-select-lg" required>
+                <option selected disabled>Selecciona tu nivel</option>
+                <option>Principiante</option>
+                <option>Intermedio</option>
+                <option>Chef aficionado</option>
               </select>
             </div>
 

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Planificación y Recetas | NutriVida{% endblock %}
+
+{% block titulo %}Banco de Recetas Saludables{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+
+  <div class="card p-4 mb-5">
+    <h4 class="fw-bold mb-3 text-center">Filtra tus recetas</h4>
+    <form class="row g-3 justify-content-center">
+      <div class="col-md-3">
+        <label class="form-label">Tiempo máximo (minutos)</label>
+        <input type="number" class="form-control" placeholder="Ej: 30">
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">Dificultad</label>
+        <select class="form-select">
+          <option selected disabled>Selecciona</option>
+          <option>Fácil</option>
+          <option>Intermedia</option>
+          <option>Difícil</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">Tipo de dieta</label>
+        <select class="form-select">
+          <option selected disabled>Selecciona</option>
+          <option>Vegana</option>
+          <option>Vegetariana</option>
+          <option>Sin gluten</option>
+          <option>Keto</option>
+          <option>Mediterránea</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="form-label">Calorías máximas</label>
+        <input type="number" class="form-control" placeholder="Ej: 500">
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Ingrediente principal</label>
+        <input type="text" class="form-control" placeholder="Ej: Pollo, Quinoa...">
+      </div>
+
+      <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-warning w-100 fw-semibold text-dark">
+          Buscar Recetas
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='img/quinoa_bowl.jpg') }}" class="card-img-top" alt="Bowl de Quinoa y Pollo">
+        <div class="card-body text-center">
+          <h5 class="fw-bold">Bowl de Quinoa y Pollo</h5>
+          <p class="text-muted mb-1">Tiempo: 20 min | 450 kcal</p>
+          <p class="small">Ideal para principiantes </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='img/meal_prep.jpg') }}" class="card-img-top" alt="Meal Prep de Pollo Asado">
+        <div class="card-body text-center">
+          <h5 class="fw-bold">Meal Prep de Pollo Asado</h5>
+          <p class="text-muted mb-1">Tiempo: 40 min | 530 kcal</p>
+          <p class="small">Ideal para cocinar en lote </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='img/wrap_vegano.jpg') }}" class="card-img-top" alt="Wrap Vegano de Garbanzos">
+        <div class="card-body text-center">
+          <h5 class="fw-bold">Wrap Vegano de Garbanzos</h5>
+          <p class="text-muted mb-1">Tiempo: 15 min | 380 kcal</p>
+          <p class="small">Rápido y saludable </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="mt-5 text-center">
+    <h4 class="fw-bold mb-3">Recetas para Principiantes </h4>
+    <p class="text-muted mb-4">Pocos ingredientes y pasos sencillos.</p>
+    <img src="{{ url_for('static', filename='img/principiantes.jpg') }}" alt="Recetas para principiantes" class="img-fluid rounded mb-4">
+    <div class="d-flex flex-wrap justify-content-center gap-3">
+      <button class="btn btn-outline-warning text-dark">Huevos Revueltos con Espinaca</button>
+      <button class="btn btn-outline-warning text-dark">Avena con Frutas</button>
+      <button class="btn btn-outline-warning text-dark">Ensalada de Pollo</button>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+

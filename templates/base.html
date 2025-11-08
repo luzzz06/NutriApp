@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+  <head>
+    <meta charset="UTF-8">
+    <title>NutriApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+
+  <body class="bg-light">
+
+
+    <nav class="navbar navbar-expand-lg bg-warning shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-dark fs-3" href="#">NutriApp</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#funMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="funMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link text-dark px-3" href="/base">Menu</a></li>
+            <li class="nav-item"><a class="nav-link text-dark px-3" href="/inicio">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link text-dark px-3" href="/registro">Registro</a></li>
+            <li class="nav-item"><a class="nav-link text-dark px-3" href="/recetas">Recetas</a></li>
+            <li class="nav-item"><a class="nav-link text-dark px-3" href="/herramientas">Herramientas</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <header class="container my-4">
+      <div class="p-5 bg-white rounded-4 shadow text-center">
+        <h1 class="fw-bold text-warning fs-2">
+          {% block titulo %}¡Bienvenido a NutriApp!{% endblock %}
+        </h1>
+
+        <p class="text-muted fs-5 mt-2">
+          Tu lugar para aprender nutrición y llevar una vida mejor…
+        </p>
+
+        <p class="text-muted fs-5 mt-2">
+          Hola, bienvenido a nuestra aplicación nutricional. Te ofrecemos información 
+          confiable sobre las diferentes aplicaciones de nutrición del mercado, desde las de paga
+          hasta las gratuitas, con su respectiva información y funcionalidades.
+        </p>
+      </div>
+    </header>
+
+
+    <main class="container my-5">
+      {% block content %}
+      <div class="card shadow p-4 rounded-4">
+        <h3 class="fw-bold text-warning text-center">Explora la Nutrición</h3>
+
+        <div class="mt-4">
+
+          <button class="btn btn-outline-secondary w-100 text-start mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+             ¿Cómo leer las etiquetas nutricionales?
+          </button>
+          <div class="collapse" id="q1">
+            <div class="card card-body">
+              ¡No es un jeroglífico! Aprende a identificar calorías, porciones y nutrientes clave como un experto 
+            </div>
+          </div>
+
+          <button class="btn btn-outline-secondary w-100 text-start mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+             Mitos y verdades sobre las dietas de moda
+          </button>
+          <div class="collapse" id="q2">
+            <div class="card card-body">
+              ¿La dieta keto es mágica? ¿El ayuno intermitente te hace volar? Descubre lo que dice la ciencia y ríete de los mitos 
+            </div>
+          </div>
+
+          <button class="btn btn-outline-secondary w-100 text-start mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#q3">
+             Guías sobre macronutrientes y su función
+          </button>
+          <div class="collapse" id="q3">
+            <div class="card card-body">
+              Proteínas para tus músculos, carbohidratos para tu energía y grasas para tu cerebro. ¡Conócelos y equilibra tu plato! 
+            </div>
+          </div>
+
+          <button class="btn btn-outline-secondary w-100 text-start mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#q4">
+            La importancia de la hidratación, la fibra, etc.
+          </button>
+          <div class="collapse" id="q4">
+            <div class="card card-body">
+              Tu cuerpo es como una planta: necesita agua, fibra y cariño. ¡No lo dejes marchitar! 
+            </div>
+          </div>
+
+        </div>
+      </div>
+      {% endblock %}
+    </main>
+
+
+    <footer class="bg-warning text-dark text-center py-4 mt-4">
+      <p class="mb-1">Ubiarco Montes María Luz – 3°D</p>
+      <p class="mb-0">Medina Hernández Oscar Adrián – 3°D</p>
+      <p class="fw-bold mb-1">3-D</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
