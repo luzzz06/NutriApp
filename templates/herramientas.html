@@ -8,71 +8,71 @@
 
   <div class="text-center mb-5">
     <h3 class="fw-bold">Calculadoras y Herramientas</h3>
-    <p class="text-muted">Usa estas herramientas para conocer mejor tu cuerpo y optimizar tu alimentación 💪</p>
+    <p class="text-secondary">Usa estas herramientas para conocer mejor tu cuerpo y optimizar tu alimentación.</p>
   </div>
 
- 
   <div class="row g-4">
     
-
+  
     <div class="col-md-4">
-      <div class="card h-100 text-center p-3">
-        <img src="{{ url_for('static', filename='calc/imc.jpg') }}" alt="IMC" class="mx-auto my-3" width="80">
+      <div class="card h-100 text-center p-3 shadow-sm border-0">
+        <img src="{{ url_for('static', filename='calc/imc.jpg') }}" alt="IMC" class="mx-auto my-3 rounded-circle" width="90" height="90">
         <h5 class="fw-bold">Calculadora IMC</h5>
-        <p class="text-muted small">Determina si tu peso está dentro del rango saludable.</p>
-        <button class="btn btn-warning text-dark fw-semibold">Calcular IMC</button>
+        <p class="text-secondary small">Determina si tu peso está dentro del rango saludable según tu altura.</p>
+        <a href="{{ url_for('imc') }}" class="btn btn-warning text-dark fw-semibold mt-auto">Calcular IMC</a>
       </div>
     </div>
 
 
     <div class="col-md-4">
-      <div class="card h-100 text-center p-3">
-        <img src="{{ url_for('static', filename='calc/tmb.jpg') }}" alt="TMB" class="mx-auto my-3" width="80">
+      <div class="card h-100 text-center p-3 shadow-sm border-0">
+        <img src="{{ url_for('static', filename='calc/tmb.jpg') }}" alt="TMB" class="mx-auto my-3 rounded-circle" width="90" height="90">
         <h5 class="fw-bold">Tasa Metabólica Basal (TMB)</h5>
-        <p class="text-muted small">Conoce cuántas calorías necesitas para mantenerte en reposo.</p>
-        <button class="btn btn-warning text-dark fw-semibold">Calcular TMB</button>
+        <p class="text-secondary small">Conoce cuántas calorías necesitas para mantenerte en reposo.</p>
+        <a href="{{ url_for('tmb') }}" class="btn btn-warning text-dark fw-semibold mt-auto">Calcular TMB</a>
       </div>
     </div>
 
-
+ 
     <div class="col-md-4">
-      <div class="card h-100 text-center p-3">
-        <img src="{{ url_for('static', filename='calc/gct.jpg') }}" alt="GCT" class="mx-auto my-3" width="80">
+      <div class="card h-100 text-center p-3 shadow-sm border-0">
+        <img src="{{ url_for('static', filename='calc/gct.jpg') }}" alt="GCT" class="mx-auto my-3 rounded-circle" width="90" height="90">
         <h5 class="fw-bold">Gasto Calórico Total (GCT)</h5>
-        <p class="text-muted small">Calcula cuántas calorías quemas en tu día según tu actividad física.</p>
-        <button class="btn btn-warning text-dark fw-semibold">Calcular GCT</button>
+        <p class="text-secondary small">Calcula cuántas calorías quemas al día según tu actividad física.</p>
+        <a href="{{ url_for('gct') }}" class="btn btn-warning text-dark fw-semibold mt-auto">Calcular GCT</a>
       </div>
     </div>
 
 
     <div class="col-md-4">
-      <div class="card h-100 text-center p-3">
-        <img src="{{ url_for('static', filename='calc/peso_ideal.jpg') }}" alt="Peso ideal" class="mx-auto my-3" width="80">
+      <div class="card h-100 text-center p-3 shadow-sm border-0">
+        <img src="{{ url_for('static', filename='calc/peso_ideal.jpg') }}" alt="Peso Ideal" class="mx-auto my-3 rounded-circle" width="90" height="90">
         <h5 class="fw-bold">Peso Corporal Ideal</h5>
-        <p class="text-muted small">Descubre cuál es tu peso ideal según tu altura y sexo.</p>
-        <button class="btn btn-warning text-dark fw-semibold">Calcular Peso Ideal</button>
+        <p class="text-secondary small">Descubre cuál es tu peso ideal según tu altura y sexo.</p>
+        <a href="{{ url_for('peso_ideal') }}" class="btn btn-warning text-dark fw-semibold mt-auto">Calcular Peso Ideal</a>
       </div>
     </div>
 
 
     <div class="col-md-4">
-      <div class="card h-100 text-center p-3">
-        <img src="{{ url_for('static', filename='calc/macronutrientes.jpg') }}" alt="Macronutrientes" class="mx-auto my-3" width="80">
+      <div class="card h-100 text-center p-3 shadow-sm border-0">
+        <img src="{{ url_for('static', filename='calc/macronutrientes.jpg') }}" alt="Macronutrientes" class="mx-auto my-3 rounded-circle" width="90" height="90">
         <h5 class="fw-bold">Calculadora de Macronutrientes</h5>
-        <p class="text-muted small">Divide tus calorías en proteínas, grasas y carbohidratos.</p>
-        <button class="btn btn-warning text-dark fw-semibold">Calcular Macronutrientes</button>
+        <p class="text-secondary small">Divide tus calorías diarias entre proteínas, grasas y carbohidratos.</p>
+        <a href="{{ url_for('macronutrientes') }}" class="btn btn-warning text-dark fw-semibold mt-auto">Calcular Macronutrientes</a>
       </div>
     </div>
-
 
     <div class="col-md-4">
-      <div class="card h-100 text-center p-3">
-        <img src="{{ url_for('static', filename='calc/analizador.jpg') }}" alt="Analizador de recetas" class="mx-auto my-3" width="80">
+      <div class="card h-100 text-center p-3 shadow-sm border-0">
+        <img src="{{ url_for('static', filename='calc/analizador.jpg') }}" alt="Analizador de Recetas" class="mx-auto my-3 rounded-circle" width="90" height="90">
         <h5 class="fw-bold">Analizador de Recetas</h5>
-        <p class="text-muted small">Obtén los valores nutricionales de tus platos favoritos.</p>
-        <button class="btn btn-warning text-dark fw-semibold">Analizar Receta</button>
+        <p class="text-secondary small">Obtén los valores nutricionales aproximados de tus platos favoritos.</p>
+        <a href="{{ url_for('analizador') }}" class="btn btn-warning text-dark fw-semibold mt-auto">Analizar Receta</a>
       </div>
     </div>
+
   </div>
 </div>
 {% endblock %}
+

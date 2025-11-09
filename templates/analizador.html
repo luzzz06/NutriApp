@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+  <h3 class="text-center mb-4">Analizador de Recetas</h3>
+  <form method="post" class="mx-auto" style="max-width:500px;">
+    <div class="mb-3">
+      <label class="form-label">Describe tu receta:</label>
+      <textarea name="receta" rows="4" class="form-control" placeholder="Ejemplo: 1 taza de arroz, 1 pechuga de pollo..." required></textarea>
+    </div>
+    <button class="btn btn-warning w-100">Analizar</button>
+  </form>
+
+  {% if resultado %}
+  <div class="alert alert-info text-center mt-4">{{ resultado }}</div>
+  {% endif %}
+</div>
+{% endblock %}
