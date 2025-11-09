@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}NutriApp{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+
+  <body class="bg-light">
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg bg-warning shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-dark fs-3" href="/inicio">NutriApp</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#funMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="funMenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+            <li class="nav-item">
+              <a class="nav-link text-dark px-3" href="/menu">Menu</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark px-3" href="/inicio">Inicio</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark px-3" href="/registro">Registro</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark px-3" href="/recetas">Recetas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-dark px-3" href="/herramientas">Herramientas</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- HEADER GENERAL -->
+    <header class="container my-4">
+      <div class="p-5 bg-white rounded-4 shadow text-center">
+        <h1 class="fw-bold text-warning fs-2">
+          {% block titulo %}NutriApp{% endblock %}
+        </h1>
+      </div>
+    </header>
+
+
+    <!-- BLOQUE DE CONTENIDO -->
+    <main class="container my-5">
+      {% block contenido %}
+      {% endblock %}
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-warning text-dark text-center py-4 mt-4">
+      <p class="mb-1">Ubiarco Montes María Luz – 3°D</p>
+      <p class="mb-0">Medina Hernández Oscar Adrián – 3°D</p>
+      <p class="fw-bold mb-1">3-D</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>
