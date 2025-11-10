@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Iniciar Sesión | NutriVida{% endblock %}
+{% block titulo %}Inicio de Sesión{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow border-0 p-4 bg-warning-subtle">
+        <h3 class="fw-bold text-center mb-4 text-dark">Iniciar Sesión</h3>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Correo electrónico</label>
+            <input type="email" name="correo" class="form-control form-control-lg" placeholder="Ingresa tu correo" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Contraseña</label>
+            <input type="password" name="contraseña" class="form-control form-control-lg" placeholder="Tu contraseña" required>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-warning btn-lg fw-semibold text-dark">Entrar</button>
+          </div>
+        </form>
+
+        <p class="text-muted text-center mt-3">
+          ¿No tienes cuenta?
+          <a href="{{ url_for('registro') }}" class="text-dark fw-semibold text-decoration-none">Regístrate aquí</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
