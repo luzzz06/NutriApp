@@ -10,6 +10,7 @@ def base():
     return render_template('base.html')
 
 
+
 @app.route('/inicio')
 def inicio():
     return render_template('inicio.html')
