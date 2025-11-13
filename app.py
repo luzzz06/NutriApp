@@ -25,6 +25,10 @@ def recetas():
 def herramientas():
     return render_template('herramientas.html')
 
+@app.route('/Inicio de Sesión')
+def sesion():
+    return render_template('login.html')
+
 
 
 
@@ -160,12 +164,12 @@ diccionario_datos = {
     "apellidos": {"tipo": "Texto (string)", "descripcion": "Apellidos del usuario", "obligatorio": True},
     "edad": {"tipo": "Entero (int)", "descripcion": "Edad del usuario", "obligatorio": True},
     "sexo": {"tipo": "Texto (string)", "descripcion": "Sexo o identidad de género",
-             "valores_permitidos": ["Femenino", "Masculino", "Otro"], "obligatorio": True},
+    "valores_permitidos": ["Femenino", "Masculino", "Otro"], "obligatorio": True},
     "peso": {"tipo": "Decimal (float)", "descripcion": "Peso corporal (kg)", "obligatorio": True},
     "altura": {"tipo": "Entero (int)", "descripcion": "Altura (cm)", "obligatorio": True},
     "nivel_actividad": {"tipo": "Texto (string)", "descripcion": "Nivel de actividad física diaria",
-                        "valores_permitidos": ["Sedentario", "Ligero", "Moderado", "Activo", "Muy activo"],
-                        "obligatorio": True}
+    "valores_permitidos": ["Sedentario", "Ligero", "Moderado", "Activo", "Muy activo"],
+    "obligatorio": True}
 }
 
 
