@@ -25,8 +25,18 @@ def recetas():
 def herramientas():
     return render_template('herramientas.html')
 
-@app.route('/Inicio de Sesión')
+@app.route('/inicia sesion', methods=['GET', 'POST'])
 def sesion():
+    if request.method == 'POST':
+        correo = request.form['correo']
+        contraseña = request.form['contraseña']
+
+        if correo == "admin@gmail.com" and contraseña == "1234":
+            return redirect(url_for('inicio')) 
+
+        flash("Correo o contraseña incorrectos", "danger")
+        return redirect(url_for('login'))
+
     return render_template('login.html')
 
 

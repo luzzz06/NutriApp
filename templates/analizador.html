@@ -2,6 +2,13 @@
 {% block title %}Analizador{% endblock %}
 {% block contenido %}
 <h4>Analizador de Recetas</h4>
+
+<div class="text-center mb-4">
+  <p class="text-muted">Herramienta que calcula las calorías totales y por ingrediente de una receta.
+    Permite ingresar alimentos y cantidades (por ejemplo, 100 g de pollo, 1 huevo, 50 g de arroz) y el sistema estima el aporte energético de cada componente, además del total de calorías del plato.
+    Es útil para evaluar el valor nutricional de comidas caseras y mejorar la planificación alimentaria.</p>
+  </div>
+
 <form method="POST">
   <div class="mb-3"><label>Ingresa tu receta:</label><textarea name="receta" class="form-control" required></textarea></div>
   <button class="btn btn-warning">Analizar</button>

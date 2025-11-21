@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% block title %}GCT{% endblock %}
 {% block contenido %}
-<h4>Gasto Calórico Total</h4>
+<h4>Calculadora de Gasto Calórico Total (GCT)</h4>
+
+<div class="text-center mb-4">
+  <p class="text-muted">Calcula cuántas calorías necesita una persona al día considerando su actividad física.
+    Se basa en la TMB y la multiplica por un factor de actividad para obtener la energía total requerida para mantener el peso actual.</p>
+  </div>
+
 <form method="POST">
   <div class="mb-3"><label>TMB (kcal):</label><input name="tmb" type="number" step="0.1" class="form-control" required></div>
   <div class="mb-3"><label>Factor de Actividad:</label><input name="actividad" type="number" step="0.01" class="form-control" required></div>

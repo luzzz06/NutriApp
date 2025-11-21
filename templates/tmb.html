@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 {% block title %}TMB{% endblock %}
 {% block contenido %}
-<h4>Tasa Metabólica Basal</h4>
+<h4>Calculadora de Tasa Metabólica Basal (TMB)</h4>
+
+<div class="text-center mb-4">
+  <p class="text-muted">Estima cuántas calorías quema el cuerpo en reposo absoluto durante un día.
+    Es la energía mínima necesaria para que el organismo mantenga funciones vitales como respirar, circular sangre o mantener la temperatura corporal.</p>
+  </div>
+
 <form method="POST">
   <div class="mb-3"><label>Peso (kg):</label><input name="peso" type="number" step="0.1" class="form-control" required></div>
   <div class="mb-3"><label>Altura (cm):</label><input name="altura" type="number" class="form-control" required></div>
