@@ -1,10 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+import requests
 
 app = Flask(__name__)
 app.secret_key = "clave_secreta_segura"  
 
+USDA_SEARCH_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
+API_KEY = "LgHJdzvsfDQ0jcffIyAVRLu3hbTg2tpUG7AJ4d3M"
 
-
+# Rutas base
 @app.route('/')
 def base():
     return render_template('base.html')
@@ -35,13 +38,12 @@ def sesion():
             return redirect(url_for('inicio')) 
 
         flash("Correo o contraseña incorrectos", "danger")
-        return redirect(url_for('login'))
+        return redirect(url_for('sesion'))
 
     return render_template('login.html')
 
 
-
-
+# Rutas de herramientas nutricionales
 @app.route('/imc', methods=['GET', 'POST'])
 def imc():
     resultado = None
@@ -51,7 +53,6 @@ def imc():
             altura = float(request.form.get('altura', 0)) / 100
             if peso <= 0 or altura <= 0:
                 raise ValueError("Valores inválidos.")
-
             imc_valor = peso / (altura ** 2)
             if imc_valor < 18.5:
                 estado = "Bajo peso"
@@ -61,13 +62,10 @@ def imc():
                 estado = "Sobrepeso"
             else:
                 estado = "Obesidad"
-
             resultado = f"Tu IMC es {imc_valor:.2f} ({estado})"
         except Exception:
             flash("Error: revisa los datos ingresados.", "danger")
     return render_template('imc.html', resultado=resultado)
-
-
 
 @app.route('/tmb', methods=['GET', 'POST'])
 def tmb():
@@ -78,21 +76,16 @@ def tmb():
             altura = float(request.form.get('altura', 0))
             edad = int(request.form.get('edad', 0))
             sexo = request.form.get('sexo')
-
             if sexo not in ["Masculino", "Femenino"] or peso <= 0 or altura <= 0 or edad <= 0:
                 raise ValueError("Datos inválidos.")
-
             if sexo == "Masculino":
                 tmb_valor = 88.362 + (13.397 * peso) + (4.799 * altura) - (5.677 * edad)
             else:
                 tmb_valor = 447.593 + (9.247 * peso) + (3.098 * altura) - (4.330 * edad)
-
             resultado = f"Tu TMB es {tmb_valor:.2f} kcal/día"
         except Exception:
             flash("Error: revisa los datos ingresados.", "danger")
     return render_template('tmb.html', resultado=resultado)
-
-
 
 @app.route('/gct', methods=['GET', 'POST'])
 def gct():
@@ -109,8 +102,6 @@ def gct():
             flash("Error: revisa los datos ingresados.", "danger")
     return render_template('gct.html', resultado=resultado)
 
-
-
 @app.route('/peso_ideal', methods=['GET', 'POST'])
 def peso_ideal():
     resultado = None
@@ -118,21 +109,16 @@ def peso_ideal():
         try:
             altura = float(request.form.get('altura', 0))
             sexo = request.form.get('sexo')
-
             if sexo not in ["Masculino", "Femenino"] or altura <= 0:
                 raise ValueError("Datos inválidos.")
-
             if sexo == 'Masculino':
                 peso_ideal_valor = 50 + 2.3 * ((altura / 2.54) - 60)
             else:
                 peso_ideal_valor = 45.5 + 2.3 * ((altura / 2.54) - 60)
-
             resultado = f"Tu peso ideal es {peso_ideal_valor:.2f} kg"
         except Exception:
             flash("Error: revisa los datos ingresados.", "danger")
     return render_template('peso_ideal.html', resultado=resultado)
-
-
 
 @app.route('/macronutrientes', methods=['GET', 'POST'])
 def macronutrientes():
@@ -155,20 +141,37 @@ def macronutrientes():
     return render_template('macronutrientes.html', resultado=resultado)
 
 
+# Analizador de recetas integrado con API USDA
 
 @app.route('/analizador', methods=['GET', 'POST'])
 def analizador():
     resultado = None
+    datos_api = None  # Guardará los resultados de la API
+
     if request.method == 'POST':
         receta = request.form.get('receta', '').strip()
         if receta:
-            resultado = f"La receta '{receta}' tiene una estimación de 350 kcal por porción (demo)."
+            # Consultar la API de USDA
+            params = {
+                "query": receta,
+                "api_key": API_KEY
+            }
+            try:
+                response = requests.get(USDA_SEARCH_URL, params=params)
+                if response.status_code == 200:
+                    datos_api = response.json()
+                    resultado = f"Resultados obtenidos para la receta '{receta}'"
+                else:
+                    flash("No se pudieron obtener datos de la API.", "danger")
+            except Exception as e:
+                flash(f"Error al consultar la API: {e}", "danger")
         else:
             flash("Por favor, ingresa una receta válida.", "warning")
-    return render_template('analizador.html', resultado=resultado)
+
+    return render_template('analizador.html', resultado=resultado, datos_api=datos_api)
 
 
-
+# diccionario 
 diccionario_datos = {
     "nombre": {"tipo": "Texto (string)", "descripcion": "Nombre del usuario", "obligatorio": True},
     "apellidos": {"tipo": "Texto (string)", "descripcion": "Apellidos del usuario", "obligatorio": True},
@@ -179,10 +182,11 @@ diccionario_datos = {
     "altura": {"tipo": "Entero (int)", "descripcion": "Altura (cm)", "obligatorio": True},
     "nivel_actividad": {"tipo": "Texto (string)", "descripcion": "Nivel de actividad física diaria",
     "valores_permitidos": ["Sedentario", "Ligero", "Moderado", "Activo", "Muy activo"],
-    "obligatorio": True}
+     "obligatorio": True}
 }
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
