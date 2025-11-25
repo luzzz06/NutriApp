@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
 
 app = Flask(__name__)
@@ -7,17 +7,48 @@ app.secret_key = "clave_secreta_segura"
 USDA_SEARCH_URL = "https://api.nal.usda.gov/fdc/v1/foods/search"
 API_KEY = "LgHJdzvsfDQ0jcffIyAVRLu3hbTg2tpUG7AJ4d3M"
 
-# Rutas base
+diccionario_datos = {
+    "nombre": {"tipo": "Texto (string)", "descripcion": "Nombre del usuario", "obligatorio": True},
+    "apellidos": {"tipo": "Texto (string)", "descripcion": "Apellidos del usuario", "obligatorio": True},
+    "edad": {"tipo": "Entero (int)", "descripcion": "Edad del usuario", "obligatorio": True},
+    "sexo": {"tipo": "Texto (string)", "descripcion": "Sexo o identidad de género",
+    "valores_permitidos": ["Femenino", "Masculino", "Otro"], "obligatorio": True},
+    "peso": {"tipo": "Decimal (float)", "descripcion": "Peso corporal (kg)", "obligatorio": True},
+    "altura": {"tipo": "Entero (int)", "descripcion": "Altura (cm)", "obligatorio": True},
+    "nivel_actividad": {"tipo": "Texto (string)", "descripcion": "Nivel de actividad física diaria",
+    "valores_permitidos": ["Sedentario", "Ligero", "Moderado", "Activo", "Muy activo"],
+    "obligatorio": True},
+    "correo": {"tipo": "Texto (string)", "descripcion": "Correo electrónico", "obligatorio": True},
+    "contraseña": {"tipo": "Texto (string)", "descripcion": "Contraseña de usuario", "obligatorio": True},
+    "objetivo": {"tipo": "Texto (string)", "descripcion": "Objetivo principal", "obligatorio": True},
+    "alergias": {"tipo": "Texto (string)", "descripcion": "Alergias o intolerancias", "obligatorio": False},
+    "dieta": {"tipo": "Texto (string)", "descripcion": "Dieta o preferencia", "obligatorio": False},
+    "disgustos": {"tipo": "Texto (string)", "descripcion": "Alimentos que no gustan", "obligatorio": False},
+    "cocina": {"tipo": "Texto (string)", "descripcion": "Nivel de experiencia en cocina", "obligatorio": True}
+}
+usuarios_registrados = {}
+
 @app.route('/')
 def base():
     return render_template('base.html')
 
 @app.route('/inicio')
 def inicio():
+    if not session.get("usuario"):
+        flash("Debes iniciar sesión primero.", "warning")
+        return redirect(url_for('sesion'))
     return render_template('inicio.html')
 
-@app.route('/registro')
+@app.route('/registro', methods=['GET', 'POST'])
 def registro():
+    if request.method == 'POST':
+        correo = request.form.get("correo").lower()
+        if correo in usuarios_registrados:
+            flash("Este correo ya está registrado", "danger")
+            return redirect(url_for('registro'))
+        usuarios_registrados[correo] = {key: request.form.get(key) for key in diccionario_datos}
+        flash("Registro exitoso, inicia sesión ahora", "success")
+        return redirect(url_for('sesion'))
     return render_template('registro.html')
 
 @app.route('/recetas')
@@ -31,19 +62,24 @@ def herramientas():
 @app.route('/inicia sesion', methods=['GET', 'POST'])
 def sesion():
     if request.method == 'POST':
-        correo = request.form['correo']
-        contraseña = request.form['contraseña']
-
-        if correo == "admin@gmail.com" and contraseña == "1234":
-            return redirect(url_for('inicio')) 
-
-        flash("Correo o contraseña incorrectos", "danger")
-        return redirect(url_for('sesion'))
-
+        correo = request.form.get("correo").lower()
+        contraseña = request.form.get("contraseña")
+        usuario = usuarios_registrados.get(correo)
+        if usuario and usuario.get("contraseña") == contraseña:
+            session["usuario"] = correo
+            flash(f"Bienvenido {usuario.get('nombre')}!", "success")
+            return redirect(url_for('inicio'))
+        else:
+            flash("Correo o contraseña incorrectos", "danger")
+            return redirect(url_for('sesion'))
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    session.pop("usuario", None)
+    flash("Has cerrado sesión correctamente.", "success")
+    return redirect(url_for('sesion'))
 
-# Rutas de herramientas nutricionales
 @app.route('/imc', methods=['GET', 'POST'])
 def imc():
     resultado = None
@@ -140,22 +176,14 @@ def macronutrientes():
             flash("Error: revisa los datos ingresados.", "danger")
     return render_template('macronutrientes.html', resultado=resultado)
 
-
-# Analizador de recetas integrado con API USDA
-
 @app.route('/analizador', methods=['GET', 'POST'])
 def analizador():
     resultado = None
-    datos_api = None  # Guardará los resultados de la API
-
+    datos_api = None
     if request.method == 'POST':
         receta = request.form.get('receta', '').strip()
         if receta:
-            # Consultar la API de USDA
-            params = {
-                "query": receta,
-                "api_key": API_KEY
-            }
+            params = {"query": receta, "api_key": API_KEY}
             try:
                 response = requests.get(USDA_SEARCH_URL, params=params)
                 if response.status_code == 200:
@@ -167,24 +195,7 @@ def analizador():
                 flash(f"Error al consultar la API: {e}", "danger")
         else:
             flash("Por favor, ingresa una receta válida.", "warning")
-
     return render_template('analizador.html', resultado=resultado, datos_api=datos_api)
-
-
-# diccionario 
-diccionario_datos = {
-    "nombre": {"tipo": "Texto (string)", "descripcion": "Nombre del usuario", "obligatorio": True},
-    "apellidos": {"tipo": "Texto (string)", "descripcion": "Apellidos del usuario", "obligatorio": True},
-    "edad": {"tipo": "Entero (int)", "descripcion": "Edad del usuario", "obligatorio": True},
-    "sexo": {"tipo": "Texto (string)", "descripcion": "Sexo o identidad de género",
-    "valores_permitidos": ["Femenino", "Masculino", "Otro"], "obligatorio": True},
-    "peso": {"tipo": "Decimal (float)", "descripcion": "Peso corporal (kg)", "obligatorio": True},
-    "altura": {"tipo": "Entero (int)", "descripcion": "Altura (cm)", "obligatorio": True},
-    "nivel_actividad": {"tipo": "Texto (string)", "descripcion": "Nivel de actividad física diaria",
-    "valores_permitidos": ["Sedentario", "Ligero", "Moderado", "Activo", "Muy activo"],
-     "obligatorio": True}
-}
-
 
 if __name__ == '__main__':
     app.run(debug=True)
