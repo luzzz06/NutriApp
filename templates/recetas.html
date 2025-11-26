@@ -67,7 +67,7 @@
             {% elif receta.nombre == "Meal Prep de Pollo Asado" %}
               <img src="{{ url_for('static', filename='img/meal_prep.jpg') }}" class="card-img-top" alt="{{ receta.nombre }}">
             {% elif receta.nombre == "Wrap Vegano de Garbanzos" %}
-              <img src="{{ url_for('static', filename='img/wrap_vegano.jpg') }}" class="card-img-top" alt="{{ receta.nombre }}">
+              <img src="{{ url_for('static', filename='img/static/img/wrap_vegano.jpg') }}" class="card-img-top" alt="{{ receta.nombre }}">
             {% endif %}
             <div class="card-body text-center">
               <h5 class="fw-bold">{{ receta.nombre }}</h5>
