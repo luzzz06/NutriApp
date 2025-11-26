@@ -36,7 +36,6 @@ lista_recetas = [
         "dieta": "Mediterránea",
         "calorias": 420,
         "ingrediente": "pollo",
-        "imagen": "ensalada_mediterranea_quinoa.jpg",
         "carbohidratos": "45 g",
         "saludabilidad": "5/5",
         "ingredientes": [
@@ -67,7 +66,6 @@ lista_recetas = [
         "dieta": "Keto",
         "calorias": 510,
         "ingrediente": "pollo",
-        "imagen": "pollo_plancha_verduras.jpg",
         "carbohidratos": "10 g",
         "saludabilidad": "4/5",
         "ingredientes": [
@@ -95,7 +93,6 @@ lista_recetas = [
         "dieta": "Vegana",
         "calorias": 320,
         "ingrediente": "garbanzos",
-        "imagen": "wrap_vegetariano_garbanzos.jpg",
         "carbohidratos": "40 g",
         "saludabilidad": "5/5",
         "ingredientes": [
@@ -122,7 +119,6 @@ lista_recetas = [
         "dieta": "Keto",
         "calorias": 480,
         "ingrediente": "res",
-        "imagen": "res_brocoli_keto.jpg",
         "carbohidratos": "8 g",
         "saludabilidad": "4/5",
         "ingredientes": [
@@ -149,7 +145,6 @@ lista_recetas = [
         "dieta": "Vegetariana",
         "calorias": 520,
         "ingrediente": "arroz integral",
-        "imagen": "paella_vegetariana_integral.jpg",
         "carbohidratos": "60 g",
         "saludabilidad": "4/5",
         "ingredientes": [
@@ -205,7 +200,6 @@ def registro():
 @app.route("/recetas")
 def recetas():
 
-    # Si no hay parámetros → no mostramos nada
     if not request.args:
         return render_template("recetas.html", recetas=None)
 

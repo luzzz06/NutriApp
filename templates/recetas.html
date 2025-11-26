@@ -7,21 +7,16 @@
 {% block contenido %}
 <div class="container my-5">
 
-  <!-- =======================
-        FORMULARIO DE BÚSQUEDA
-  ======================= -->
   <div class="card p-4 mb-5">
     <h4 class="fw-bold mb-3 text-center">Filtra tus recetas</h4>
 
     <form class="row g-3 justify-content-center" method="GET" action="{{ url_for('recetas') }}">
 
-      <!-- Tiempo -->
       <div class="col-md-3">
         <label class="form-label">Tiempo máximo (minutos)</label>
         <input type="number" class="form-control" name="tiempo" placeholder="Ej: 30">
       </div>
 
-      <!-- Dificultad -->
       <div class="col-md-3">
         <label class="form-label">Dificultad</label>
         <select class="form-select" name="dificultad">
@@ -32,7 +27,6 @@
         </select>
       </div>
 
-      <!-- Dieta -->
       <div class="col-md-3">
         <label class="form-label">Tipo de dieta</label>
         <select class="form-select" name="dieta">
@@ -45,19 +39,16 @@
         </select>
       </div>
 
-      <!-- Calorías -->
       <div class="col-md-3">
         <label class="form-label">Calorías máximas</label>
         <input type="number" class="form-control" name="calorias" placeholder="Ej: 500">
       </div>
 
-      <!-- Ingrediente -->
       <div class="col-md-4">
         <label class="form-label">Ingrediente principal</label>
         <input type="text" class="form-control" name="ingrediente" placeholder="Ej: Pollo, Quinoa...">
       </div>
 
-      <!-- Botón Buscar -->
       <div class="col-md-3 d-flex align-items-end">
         <button type="submit" class="btn btn-warning w-100 fw-semibold text-dark">
           Buscar Recetas
@@ -67,9 +58,6 @@
     </form>
   </div>
 
-  <!-- =======================
-        LISTA DE RESULTADOS
-  ======================= -->
   <div class="row g-4">
 
     {% if recetas %}
@@ -81,10 +69,25 @@
           <a href="{{ url_for('receta_detalle') }}?nombre={{ receta.nombre | urlencode }}"
              class="text-decoration-none text-dark">
 
-            <img src="{{ url_for('static', filename='img/' ~ receta.imagen) }}"
-                 class="card-img-top"
-                 alt="{{ receta.nombre }}">
+            {% if receta.nombre == "Bowl de Quinoa y Pollo" %}
+              <img src="{{ url_for('static', filename='rece/bowl_quinoa_pollo.jpg') }}" class="card-img-top">
+            
+            {% elif receta.nombre == "Meal Prep de Pollo Asado" %}
+              <img src="{{ url_for('static', filename='rece/pollo_asado.jpg') }}" class="card-img-top">
 
+            {% elif receta.nombre == "Wrap Vegano de Garbanzos" %}
+              <img src="{{ url_for('static', filename='rece/wrap_garbanzos.jpg') }}" class="card-img-top">
+
+            {% elif receta.nombre == "Salteado Keto de Res y Brócoli" %}
+              <img src="{{ url_for('static', filename='rece/res_brocoli.jpg') }}" class="card-img-top">
+
+            {% elif receta.nombre == "Paella Vegetariana Integral" %}
+              <img src="{{ url_for('static', filename='rece/paella_integral.jpg') }}" class="card-img-top">
+
+            {% else %}
+            {% endif %}
+
+            <!-- TEXTO -->
             <div class="card-body text-center">
 
               <h5 class="fw-bold">{{ receta.nombre }}</h5>
@@ -107,7 +110,6 @@
       {% endfor %}
 
     {% else %}
-      <!-- No results -->
       <div class="text-center mt-4">
         <h5 class="text-muted">No se encontraron recetas.</h5>
       </div>
