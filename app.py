@@ -184,6 +184,10 @@ def base():
 def inicio():
     return render_template('inicio.html')
 
+@app.route('/plantillas')
+def plantillas():
+    return render_template('plantillas_desc.html')
+
 
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
