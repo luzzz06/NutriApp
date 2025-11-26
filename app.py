@@ -202,42 +202,56 @@ def registro():
         return redirect(url_for('sesion'))
     return render_template('registro.html')
 
-@app.route('/recetas', methods=['GET'])
+@app.route("/recetas")
 def recetas():
+
+    # Si no hay parámetros → no mostramos nada
     if not request.args:
-        return render_template("recetas.html", recetas=[])
+        return render_template("recetas.html", recetas=None)
 
-    tiempo = request.args.get('tiempo', type=int)
-    dificultad = request.args.get('dificultad', type=str)
-    dieta = request.args.get('dieta', type=str)
-    calorias = request.args.get('calorias', type=int)
-    ingrediente = request.args.get('ingrediente', '').lower().strip()
+    tiempo = request.args.get("tiempo", type=int)
+    dificultad = request.args.get("dificultad")
+    dieta = request.args.get("dieta")
+    calorias = request.args.get("calorias", type=int)
+    ingrediente = request.args.get("ingrediente")
 
-    recetas_filtradas = lista_recetas.copy()
+    resultados = lista_recetas
 
     if tiempo:
-        recetas_filtradas = [r for r in recetas_filtradas if r['tiempo'] <= tiempo]
+        resultados = [r for r in resultados if r["tiempo"] <= tiempo]
 
     if dificultad and dificultad != "Selecciona":
-        recetas_filtradas = [r for r in recetas_filtradas if r['dificultad'].lower() == dificultad.lower()]
+        resultados = [r for r in resultados if r["dificultad"] == dificultad]
 
     if dieta and dieta != "Selecciona":
-        recetas_filtradas = [r for r in recetas_filtradas if r['dieta'].lower() == dieta.lower()]
+        resultados = [r for r in resultados if r["dieta"] == dieta]
 
     if calorias:
-        recetas_filtradas = [r for r in recetas_filtradas if r['calorias'] <= calorias]
+        resultados = [r for r in resultados if r["calorias"] <= calorias]
 
     if ingrediente:
-        recetas_filtradas = [r for r in recetas_filtradas if ingrediente in r['ingrediente'].lower()]
+        resultados = [
+            r for r in resultados
+            if ingrediente.lower() in r["ingrediente"].lower()
+        ]
 
-    return render_template("recetas.html", recetas=recetas_filtradas)
+    return render_template("recetas.html", recetas=resultados)
 
-@app.route('/receta/<nombre>')
-def receta_detalle(nombre):
+@app.route("/receta")
+def receta_detalle():
+
+    nombre = request.args.get("nombre")
+
+    if not nombre:
+        return "Error: falta el parámetro 'nombre'", 400
+
     receta = next((r for r in lista_recetas if r["nombre"] == nombre), None)
-    if not receta:
+
+    if receta is None:
         return "Receta no encontrada", 404
+
     return render_template("receta_detalle.html", receta=receta)
+
 
 
 
@@ -368,23 +382,92 @@ def macronutrientes():
 @app.route('/analizador', methods=['GET', 'POST'])
 def analizador():
     resultado = None
-    datos_api = None
+    datos_finales = []
+    totales = {
+        "calorias": 0,
+        "proteina": 0,
+        "carbohidratos": 0,
+        "grasas": 0
+    }
+
     if request.method == 'POST':
         receta = request.form.get('receta', '').strip()
-        if receta:
-            params = {"query": receta, "api_key": API_KEY}
+
+        if not receta:
+            flash("Ingresa una receta válida.", "warning")
+            return render_template('analizador.html')
+
+        ingredientes = receta.split("\n")
+
+        for ing in ingredientes:
+            ing = ing.strip()
+            if not ing:
+                continue
+
+            params = {"query": ing, "api_key": API_KEY}
+
             try:
                 response = requests.get(USDA_SEARCH_URL, params=params)
-                if response.status_code == 200:
-                    datos_api = response.json()
-                    resultado = f"Resultados obtenidos para la receta '{receta}'"
-                else:
-                    flash("No se pudieron obtener datos de la API.", "danger")
-            except Exception as e:
-                flash(f"Error al consultar la API: {e}", "danger")
-        else:
-            flash("Por favor, ingresa una receta válida.", "warning")
-    return render_template('analizador.html', resultado=resultado, datos_api=datos_api)
+
+                if response.status_code != 200:
+                    continue
+
+                datos = response.json()
+                foods = datos.get("foods", [])
+
+                if not foods:
+                    datos_finales.append({
+                        "nombre": ing,
+                        "calorias": "No encontrado",
+                        "proteina": "No encontrado",
+                        "carbohidratos": "No encontrado",
+                        "grasas": "No encontrado",
+                    })
+                    continue
+
+                alimento = foods[0]
+                nutrientes = alimento.get("foodNutrients", [])
+
+                cal = pro = carb = fat = 0
+
+                for n in nutrientes:
+                    nombre = n.get("nutrientName", "").lower()
+                    valor = n.get("value", 0)
+
+                    if "energy" in nombre:
+                        cal = valor
+                    if "protein" in nombre:
+                        pro = valor
+                    if "carbohydrate" in nombre:
+                        carb = valor
+                    if "total lipid" in nombre or "fat" in nombre:
+                        fat = valor
+
+                datos_finales.append({
+                    "nombre": ing,
+                    "calorias": cal,
+                    "proteina": pro,
+                    "carbohidratos": carb,
+                    "grasas": fat
+                })
+
+                totales["calorias"] += cal
+                totales["proteina"] += pro
+                totales["carbohidratos"] += carb
+                totales["grasas"] += fat
+
+            except Exception:
+                continue
+
+        resultado = "Análisis completado"
+
+    return render_template(
+        'analizador.html',
+        resultado=resultado,
+        datos_finales=datos_finales,
+        totales=totales
+    )
+
 
 if __name__ == '__main__':
     app.run(debug=True)

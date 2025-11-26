@@ -7,14 +7,21 @@
 {% block contenido %}
 <div class="container my-5">
 
+  <!-- =======================
+        FORMULARIO DE BÚSQUEDA
+  ======================= -->
   <div class="card p-4 mb-5">
     <h4 class="fw-bold mb-3 text-center">Filtra tus recetas</h4>
+
     <form class="row g-3 justify-content-center" method="GET" action="{{ url_for('recetas') }}">
+
+      <!-- Tiempo -->
       <div class="col-md-3">
         <label class="form-label">Tiempo máximo (minutos)</label>
         <input type="number" class="form-control" name="tiempo" placeholder="Ej: 30">
       </div>
 
+      <!-- Dificultad -->
       <div class="col-md-3">
         <label class="form-label">Dificultad</label>
         <select class="form-select" name="dificultad">
@@ -25,6 +32,7 @@
         </select>
       </div>
 
+      <!-- Dieta -->
       <div class="col-md-3">
         <label class="form-label">Tipo de dieta</label>
         <select class="form-select" name="dieta">
@@ -37,62 +45,75 @@
         </select>
       </div>
 
+      <!-- Calorías -->
       <div class="col-md-3">
         <label class="form-label">Calorías máximas</label>
         <input type="number" class="form-control" name="calorias" placeholder="Ej: 500">
       </div>
 
+      <!-- Ingrediente -->
       <div class="col-md-4">
         <label class="form-label">Ingrediente principal</label>
         <input type="text" class="form-control" name="ingrediente" placeholder="Ej: Pollo, Quinoa...">
       </div>
 
+      <!-- Botón Buscar -->
       <div class="col-md-3 d-flex align-items-end">
         <button type="submit" class="btn btn-warning w-100 fw-semibold text-dark">
           Buscar Recetas
         </button>
       </div>
+
     </form>
   </div>
 
-  
+  <!-- =======================
+        LISTA DE RESULTADOS
+  ======================= -->
   <div class="row g-4">
+
     {% if recetas %}
-    {% for receta in recetas %}
-        <div class="col-md-4">
-            <div class="card h-100">
-            <!-- ENLACE CORREGIDO -->
-            <a href="{{ url_for('receta_detalle', nombre=receta.nombre) }}" style="text-decoration:none; color:inherit;">
-                <img src="{{ url_for('static', filename='img/' ~ receta.imagen) }}" class="card-img-top" alt="{{ receta.nombre }}">
-                <div class="card-body text-center">
-                  <h5 class="fw-bold">{{ receta.nombre }}</h5>
-                  <p class="text-muted mb-1">Tiempo: {{ receta.tiempo }} min | {{ receta.calorias }} kcal</p>
-                  <p class="small">Dificultad: {{ receta.dificultad }}</p>
-                </div>
-            </a>
+
+      {% for receta in recetas %}
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+
+          <a href="{{ url_for('receta_detalle') }}?nombre={{ receta.nombre | urlencode }}"
+             class="text-decoration-none text-dark">
+
+            <img src="{{ url_for('static', filename='img/' ~ receta.imagen) }}"
+                 class="card-img-top"
+                 alt="{{ receta.nombre }}">
+
+            <div class="card-body text-center">
+
+              <h5 class="fw-bold">{{ receta.nombre }}</h5>
+
+              <div class="d-flex justify-content-center gap-2 my-2">
+                <span class="badge bg-warning text-dark">{{ receta.tiempo }} min</span>
+                <span class="badge bg-info text-dark">{{ receta.calorias }} kcal</span>
+              </div>
+
+              <p class="small text-muted mb-1">
+                Dificultad: {{ receta.dificultad }}
+              </p>
+
             </div>
+
+          </a>
+
         </div>
-    {% endfor %}
+      </div>
+      {% endfor %}
+
     {% else %}
-        <div class="text-center mt-4">
-            <h5 class="text-muted">No se encontraron recetas.</h5>
-        </div>
+      <!-- No results -->
+      <div class="text-center mt-4">
+        <h5 class="text-muted">No se encontraron recetas.</h5>
+      </div>
     {% endif %}
-  </div>
 
-
-  <div class="mt-5 text-center">
-    <h4 class="fw-bold mb-3">Recetas para Principiantes</h4>
-    <p class="text-muted mb-4">Pocos ingredientes y pasos sencillos.</p>
-    <img src="{{ url_for('static', filename='img/principiantes.jpg') }}" alt="Recetas para principiantes" class="img-fluid rounded mb-4">
-
-    <div class="d-flex flex-wrap justify-content-center gap-3">
-      <button class="btn btn-outline-warning text-dark">Huevos Revueltos con Espinaca</button>
-      <button class="btn btn-outline-warning text-dark">Avena con Frutas</button>
-      <button class="btn btn-outline-warning text-dark">Ensalada de Pollo</button>
-    </div>
   </div>
 
 </div>
 {% endblock %}
-
