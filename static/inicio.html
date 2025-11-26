@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block contenido %}
+
+<div class="container mt-5">
+
+  <!-- Título principal -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">NutriApp – Tu Guía Nutricional Inteligente</h1>
+    <p class="text-muted">Aprende, mejora tu salud y toma decisiones inteligentes sobre tu nutrición.</p>
+  </div>
+
+
+  <div class="row">
+    <div class="col-4">
+      <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+        <nav class="nav nav-pills flex-column">
+          <a class="nav-link" href="#item-1">¿Cómo leer las etiquetas nutricionales?</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-3 my-1" href="#item-1-1">Calorías y macronutrientes</a>
+            <a class="nav-link ms-3 my-1" href="#item-1-2">Tamaño de porción</a>
+          </nav>
+          <a class="nav-link" href="#item-2">Mitos y verdades sobre las dietas de moda</a>
+          <a class="nav-link" href="#item-3">Guía rápida sobre macronutrientes</a>
+          <nav class="nav nav-pills flex-column">
+            <a class="nav-link ms-3 my-1" href="#item-3-1">Funciones de los carbohidratos</a>
+            <a class="nav-link ms-3 my-1" href="#item-3-2">Funciones de proteínas y grasas</a>
+          </nav>
+          <a class="nav-link" href="#item-4">La importancia de la hidratación</a>
+          <a class="nav-link" href="#item-5">La fibra y su impacto en la digestión</a>
+        </nav>
+      </nav>
+    </div>
+
+
+    <div class="col-8">
+      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+        
+        <div id="item-1">
+          <h4>¿Cómo leer las etiquetas nutricionales?</h4>
+ 
+
+          <div class="container my-4">
+  <div class="row">
+    <!-- Columna izquierda: imagen -->
+    <div class="col-md-4">
+      <img src="ruta-de-tu-imagen.jpg" class="img-fluid rounded" alt="Etiqueta nutricional">
+    </div>
+
+    <!-- Columna derecha: texto -->
+    <div class="col-md-8">
+      <h4>¿Cómo leer las etiquetas nutricionales?</h4>
+      <p>
+        <strong>1. Tamaño de la porción</strong><br>
+        Es el primer dato que debes revisar.<br>
+        Todos los valores de la tabla se calculan en función de esa cantidad.<br>
+        Si consumes más de una porción, multiplica calorías y nutrientes por el número de porciones que realmente comes.<br><br>
+
+        <strong>2. Calorías</strong><br>
+        Indican la energía que aporta una porción.<br>
+        Sirven para controlar tu ingesta diaria y compararla con tus necesidades energéticas.<br>
+        Ejemplo: si tu dieta es de 2,000 kcal y un producto aporta 250 kcal por porción, representa el 12.5% de tu consumo diario.<br><br>
+
+        <strong>3. Macronutrientes</strong><br>
+        Grasas totales: revisa la cantidad y distingue entre saturadas y trans.<br>
+        Saturadas: conviene limitar.<br>
+        Trans: deben evitarse.<br>
+        Carbohidratos: observa la cantidad total y los azúcares añadidos.<br>
+        Los añadidos son los que más conviene reducir.<br>
+        Proteínas: fundamentales para mantenimiento muscular y saciedad.<br>
+        Fibra: favorece la digestión y ayuda a controlar el apetito.<br><br>
+
+        <strong>4. Micronutrientes</strong><br>
+        Sodio: un exceso puede elevar la presión arterial.<br>
+        Vitaminas y minerales: busca productos que aporten nutrientes beneficiosos como calcio, hierro o vitamina D.<br><br>
+
+        <strong>5. % Valor Diario (%VD)</strong><br>
+        Indica qué porcentaje de la recomendación diaria cubres con una porción.<br>
+        Basado en una dieta de 2,000 kcal.<br>
+        Regla práctica:<br>
+        5% VD o menos = bajo.<br>
+        20% VD o más = alto.<br><br>
+
+        <strong>6. Lista de ingredientes</strong><br>
+        Se ordenan de mayor a menor cantidad.<br>
+        Los primeros ingredientes son los predominantes.<br>
+        Prefiere productos con listas cortas y con ingredientes reconocibles.<br>
+        Si “azúcar” aparece en los primeros lugares, el producto es principalmente azúcar.<br><br>
+
+        <strong>Recomendaciones prácticas</strong><br>
+        No te quedes solo con las calorías: revisa grasas, azúcares y sodio.<br>
+        Compara productos similares usando la información por 100 g/ml para mayor precisión.<br>
+        Usa el %VD como guía rápida para identificar nutrientes altos o bajos.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+        </div>
+        <div id="item-1-1">
+          <h5>Calorías y macronutrientes</h5>
+          <p>Son la unidad de energía que el cuerpo obtiene de los alimentos.
+
+<div class="container my-4">
+  <div class="row">
+    <!-- Columna izquierda: imagen -->
+    <div class="col-md-4">
+      <img src="ruta-de-tu-imagen.jpg" class="img-fluid rounded" alt="Calorías y macronutrientes">
+    </div>
+
+    <!-- Columna derecha: texto -->
+    <div class="col-md-8">
+      <h4>Calorías y macronutrientes</h4>
+      <p>
+        <strong>Se calculan a partir de los macronutrientes:</strong><br>
+        Grasas: 9 kcal por gramo.<br>
+        Carbohidratos: 4 kcal por gramo.<br>
+        Proteínas: 4 kcal por gramo.<br>
+        Alcohol: 7 kcal por gramo (aunque no es un nutriente esencial).<br><br>
+
+        El total de calorías de un alimento es la suma de lo que aportan sus macronutrientes.<br>
+        Sirven para mantener funciones vitales, actividad física y procesos metabólicos.
+      </p>
+
+      <h5>🍔 Macronutrientes</h5>
+      <p>
+        <strong>1. Grasas</strong><br>
+        Función: reserva energética, absorción de vitaminas (A, D, E, K), protección de órganos.<br>
+        Tipos:<br>
+        - Saturadas: conviene limitar.<br>
+        - Trans: deben evitarse.<br>
+        - Insaturadas (mono y poliinsaturadas): beneficiosas para salud cardiovascular.<br><br>
+
+        <strong>2. Carbohidratos</strong><br>
+        Función: principal fuente de energía rápida.<br>
+        Tipos:<br>
+        - Simples: azúcares, absorción rápida.<br>
+        - Complejos: almidones y fibra, absorción más lenta y sostenida.<br>
+        - Fibra: parte de los carbohidratos, esencial para digestión y control de glucosa.<br><br>
+
+        <strong>3. Proteínas</strong><br>
+        Función: construcción y reparación de tejidos, producción de enzimas y hormonas.<br>
+        Formadas por aminoácidos, algunos esenciales que deben obtenerse de la dieta.<br>
+        Importantes para mantener masa muscular y sensación de saciedad.
+      </p>
+    </div>
+  </div>
+</div>
+
+        </div>
+        <div id="item-1-2">
+          <h5>Tamaño de porción</h5>
+          <p>La importancia de consumir las porciones correctas y cómo leerlas en las etiquetas.</p>
+        </div>
+
+        <div id="item-2">
+          <h4>Mitos y verdades sobre las dietas de moda</h4>
+          <p>Descubre qué dietas realmente funcionan y cuáles pueden ser peligrosas para tu salud.</p>
+        </div>
+
+        <div id="item-3">
+          <h4>Guía rápida sobre macronutrientes</h4>
+          <p>Comprende la función de carbohidratos, proteínas y grasas en la nutrición diaria.</p>
+        </div>
+        <div id="item-3-1">
+          <h5>Funciones de los carbohidratos</h5>
+          <p>Proporcionan energía y son esenciales para el funcionamiento del cuerpo.</p>
+        </div>
+        <div id="item-3-2">
+          <h5>Funciones de proteínas y grasas</h5>
+          <p>Las proteínas ayudan a construir tejidos y las grasas apoyan la absorción de vitaminas y energía.</p>
+        </div>
+
+        <div id="item-4">
+          <h4>La importancia de la hidratación</h4>
+          <p>Beneficios del agua, cómo evitar la deshidratación y cuánta agua necesitas al día.</p>
+        </div>
+
+        <div id="item-5">
+          <h4>La fibra y su impacto en la digestión</h4>
+          <p>Cómo mejora la salud intestinal, regula el azúcar y ayuda al control del peso.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="text-center mt-5">
+    <h3 class="fw-bold">¿Listo para mejorar tus hábitos?</h3>
+    <p>Explora más recursos, registra tus comidas y controla tu progreso.</p>
+    <a href="#" class="btn btn-warning btn-lg">Comenzar ahora</a>
+  </div>
+
+</div>
+
+{% endblock %}

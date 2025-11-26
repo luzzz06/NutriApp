@@ -28,6 +28,159 @@ diccionario_datos = {
 }
 usuarios_registrados = {}
 
+lista_recetas = [
+    {
+        "nombre": "Bowl de Quinoa y Pollo",
+        "tiempo": 25,
+        "dificultad": "Fácil",
+        "dieta": "Mediterránea",
+        "calorias": 420,
+        "ingrediente": "pollo",
+        "imagen": "ensalada_mediterranea_quinoa.jpg",
+        "carbohidratos": "45 g",
+        "saludabilidad": "5/5",
+        "ingredientes": [
+            "1 taza de quinoa cocida",
+            "150 g pechuga de pollo a la plancha en cubos",
+            "1/2 pepino picado",
+            "1/2 aguacate en láminas",
+            "1 zanahoria rallada",
+            "1 cda aceite de oliva",
+            "Jugo de 1 limón",
+            "Sal y pimienta al gusto"
+        ],
+        "preparacion": [
+            "1) Lava la quinoa en un colador fino bajo agua fría hasta que el agua salga clara.",
+            "2) Cocina 1 taza de quinoa con 2 tazas de agua o caldo, lleva a ebullición, baja el fuego y cocina 12–15 minutos hasta que esté tierna. Deja reposar 5 min y esponja con un tenedor.",
+            "3) Mientras la quinoa se cocina, sazona la pechuga de pollo con sal y pimienta. Calienta una sartén con 1 cucharadita de aceite y cocina el pollo 4–5 minutos por lado hasta que esté dorado y cocido por dentro. Corta en cubos.",
+            "4) Lava y corta el pepino, ralla la zanahoria y corta el aguacate en láminas.",
+            "5) En un bowl grande coloca la quinoa como base. Dispón el pollo, pepino, zanahoria y aguacate en secciones sobre la quinoa.",
+            "6) Prepara el aliño mezclando el jugo de limón, el aceite de oliva, sal y pimienta. Prueba y ajusta.",
+            "7) Vierte el aliño sobre el bowl justo antes de servir y mezcla ligeramente para integrar sabores.",
+            "8) Sirve inmediatamente para aprovechar la textura del aguacate y la quinoa tibia."
+        ]
+    },
+    {
+        "nombre": "Meal Prep de Pollo Asado",
+        "tiempo": 40,
+        "dificultad": "Intermedia",
+        "dieta": "Keto",
+        "calorias": 510,
+        "ingrediente": "pollo",
+        "imagen": "pollo_plancha_verduras.jpg",
+        "carbohidratos": "10 g",
+        "saludabilidad": "4/5",
+        "ingredientes": [
+            "2 pechugas de pollo",
+            "2 cdas aceite de oliva",
+            "1 cda pimentón dulce",
+            "1 cda ajo en polvo",
+            "Sal y pimienta",
+            "Verduras para acompañar (brócoli, pimientos)"
+        ],
+        "preparacion": [
+            "1) Precalienta el horno a 200°C. Mezcla aceite, pimentón, ajo en polvo, sal y pimienta.",
+            "2) Unta las pechugas con la mezcla por ambos lados y colócalas en una bandeja para horno.",
+            "3) Hornea 20–25 minutos hasta que el interior marque 75°C o no esté rosado.",
+            "4) Mientras tanto, lava y corta las verduras. Saltea el brócoli y pimientos 5–7 minutos con una cucharadita de aceite hasta que estén al dente.",
+            "5) Retira el pollo, deja reposar 5 minutos y filetea o corta en cubos para el meal prep.",
+            "6) Divide en recipientes: pollo + verduras. Guarda en fría (4°C) hasta 4 días.",
+            "7) Para recalentar, usa microondas o sartén 2–3 minutos hasta que esté caliente por completo."
+        ]
+    },
+    {
+        "nombre": "Wrap Vegano de Garbanzos",
+        "tiempo": 15,
+        "dificultad": "Fácil",
+        "dieta": "Vegana",
+        "calorias": 320,
+        "ingrediente": "garbanzos",
+        "imagen": "wrap_vegetariano_garbanzos.jpg",
+        "carbohidratos": "40 g",
+        "saludabilidad": "5/5",
+        "ingredientes": [
+            "1 tortilla integral o de tu preferencia",
+            "1/2 taza garbanzos cocidos",
+            "1/4 taza col morada rallada",
+            "1/4 aguacate en láminas",
+            "1 cda hummus",
+            "Limón, sal y pimienta"
+        ],
+        "preparacion": [
+            "1) Calienta la tortilla en una sartén 30 segundos por lado para que sea fácil de doblar.",
+            "2) Machaca ligeramente los garbanzos con un tenedor, sazona con sal, pimienta y unas gotas de limón.",
+            "3) Unta hummus en el centro de la tortilla como base (esto ayuda a mantener húmedo el wrap).",
+            "4) Coloca los garbanzos, la col morada y las láminas de aguacate sobre el hummus.",
+            "5) Dobla los extremos y enrolla firmemente para formar el wrap. Si deseas, corta por la mitad.",
+            "6) Sirve inmediatamente o envuelve en papel film para llevar."
+        ]
+    },
+    {
+        "nombre": "Salteado Keto de Res y Brócoli",
+        "tiempo": 30,
+        "dificultad": "Intermedia",
+        "dieta": "Keto",
+        "calorias": 480,
+        "ingrediente": "res",
+        "imagen": "res_brocoli_keto.jpg",
+        "carbohidratos": "8 g",
+        "saludabilidad": "4/5",
+        "ingredientes": [
+            "200 g filete de res en tiras",
+            "1 taza brócoli en floretes",
+            "2 cdas salsa de soja baja en sodio",
+            "1 cda aceite de sésamo o oliva",
+            "1 diente ajo picado",
+            "Jengibre al gusto"
+        ],
+        "preparacion": [
+            "1) Corta la res en tiras finas y sécalas con papel para que se doren mejor.",
+            "2) Calienta una sartén grande a fuego alto con 1 cda de aceite. Añade la res y saltea 2–3 minutos hasta dorar. Retira y reserva.",
+            "3) En la misma sartén añade un poco más de aceite si hace falta y saltea el ajo y jengibre 30 segundos hasta aromatizar.",
+            "4) Agrega el brócoli y saltea 4–5 minutos hasta que esté tierno pero crujiente.",
+            "5) Vuelve a incorporar la res, añade la salsa de soja y mezcla 1–2 minutos para integrar sabores.",
+            "6) Rectifica sal y sirve inmediatamente."
+        ]
+    },
+    {
+        "nombre": "Paella Vegetariana Integral",
+        "tiempo": 55,
+        "dificultad": "Difícil",
+        "dieta": "Vegetariana",
+        "calorias": 520,
+        "ingrediente": "arroz integral",
+        "imagen": "paella_vegetariana_integral.jpg",
+        "carbohidratos": "60 g",
+        "saludabilidad": "4/5",
+        "ingredientes": [
+            "1 taza arroz integral",
+            "1 pimiento rojo",
+            "1 cebolla",
+            "1 taza alcachofas",
+            "1 taza chícharos (guisantes)",
+            "1 tomate rallado",
+            "3 tazas caldo de verduras caliente",
+            "1 cdta cúrcuma o hebras de azafrán",
+            "Aceite de oliva",
+            "Sal y pimienta"
+        ],
+        "preparacion": [
+            "1) Limpia y corta el pimiento y la cebolla en cubos pequeños. Ralla el tomate.",
+            "2) Calienta una paellera o sartén amplia con 2 cdas de aceite de oliva a fuego medio.",
+            "3) Sofríe la cebolla 4–5 minutos hasta que esté translúcida; añade el pimiento y cocina 5 minutos más hasta que empiece a ablandar.",
+            "4) Añade las alcachofas y los chícharos; saltea 2–3 minutos para incorporar.",
+            "5) Agrega el tomate rallado y cocina 3–4 minutos hasta que el líquido se reduzca ligeramente y concentre sabor.",
+            "6) Incorpora el arroz integral y revuelve 1–2 minutos para que los granos se impregnen del sofrito.",
+            "7) Añade la cúrcuma o el azafrán y mezcla. Vierte 3 tazas de caldo caliente (la proporción con arroz integral suele ser mayor que con arroz blanco).",
+            "8) Distribuye los ingredientes de manera uniforme y ajusta de sal y pimienta. Sube el fuego hasta que rompa hervor.",
+            "9) Cuando hierva, reduce el fuego a bajo-medio y cocina sin remover durante 30–35 minutos, hasta que el arroz esté tierno y el líquido se haya absorbido. Si hace falta, agrega un poco más de caldo caliente y continúa la cocción hasta que el arroz esté en su punto.",
+            "10) Una vez cocinado, apaga el fuego y deja reposar la paella 5–10 minutos cubierta con un paño limpio para que los aromas se asienten.",
+            "11) Sirve caliente, acomodando si quieres unas hebras de perejil o un chorrito de aceite de oliva por encima."
+        ]
+    }
+]
+
+
 @app.route('/')
 def base():
     return render_template('base.html')
@@ -49,9 +202,44 @@ def registro():
         return redirect(url_for('sesion'))
     return render_template('registro.html')
 
-@app.route('/recetas')
+@app.route('/recetas', methods=['GET'])
 def recetas():
-    return render_template('recetas.html')
+    if not request.args:
+        return render_template("recetas.html", recetas=[])
+
+    tiempo = request.args.get('tiempo', type=int)
+    dificultad = request.args.get('dificultad', type=str)
+    dieta = request.args.get('dieta', type=str)
+    calorias = request.args.get('calorias', type=int)
+    ingrediente = request.args.get('ingrediente', '').lower().strip()
+
+    recetas_filtradas = lista_recetas.copy()
+
+    if tiempo:
+        recetas_filtradas = [r for r in recetas_filtradas if r['tiempo'] <= tiempo]
+
+    if dificultad and dificultad != "Selecciona":
+        recetas_filtradas = [r for r in recetas_filtradas if r['dificultad'].lower() == dificultad.lower()]
+
+    if dieta and dieta != "Selecciona":
+        recetas_filtradas = [r for r in recetas_filtradas if r['dieta'].lower() == dieta.lower()]
+
+    if calorias:
+        recetas_filtradas = [r for r in recetas_filtradas if r['calorias'] <= calorias]
+
+    if ingrediente:
+        recetas_filtradas = [r for r in recetas_filtradas if ingrediente in r['ingrediente'].lower()]
+
+    return render_template("recetas.html", recetas=recetas_filtradas)
+
+@app.route('/receta/<nombre>')
+def receta_detalle(nombre):
+    receta = next((r for r in lista_recetas if r["nombre"] == nombre), None)
+    if not receta:
+        return "Receta no encontrada", 404
+    return render_template("receta_detalle.html", receta=receta)
+
+
 
 @app.route('/herramientas')
 def herramientas():

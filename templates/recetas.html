@@ -7,7 +7,6 @@
 {% block contenido %}
 <div class="container my-5">
 
-  
   <div class="card p-4 mb-5">
     <h4 class="fw-bold mb-3 text-center">Filtra tus recetas</h4>
     <form class="row g-3 justify-content-center" method="GET" action="{{ url_for('recetas') }}">
@@ -56,37 +55,37 @@
     </form>
   </div>
 
-
+  
   <div class="row g-4">
     {% if recetas %}
-      {% for receta in recetas %}
+    {% for receta in recetas %}
         <div class="col-md-4">
-          <div class="card h-100">
-            {% if receta.nombre == "Bowl de Quinoa y Pollo" %}
-              <img src="{{ url_for('static', filename='img/quinoa_bowl.jpg') }}" class="card-img-top" alt="{{ receta.nombre }}">
-            {% elif receta.nombre == "Meal Prep de Pollo Asado" %}
-              <img src="{{ url_for('static', filename='img/meal_prep.jpg') }}" class="card-img-top" alt="{{ receta.nombre }}">
-            {% elif receta.nombre == "Wrap Vegano de Garbanzos" %}
-              <img src="{{ url_for('static', filename='img/static/img/wrap_vegano.jpg') }}" class="card-img-top" alt="{{ receta.nombre }}">
-            {% endif %}
-            <div class="card-body text-center">
-              <h5 class="fw-bold">{{ receta.nombre }}</h5>
-              <p class="text-muted mb-1">Tiempo: {{ receta.tiempo }} min | {{ receta.calorias }} kcal</p>
-              <p class="small">Dificultad: {{ receta.dificultad }}</p>
+            <div class="card h-100">
+            <!-- ENLACE CORREGIDO -->
+            <a href="{{ url_for('receta_detalle', nombre=receta.nombre) }}" style="text-decoration:none; color:inherit;">
+                <img src="{{ url_for('static', filename='img/' ~ receta.imagen) }}" class="card-img-top" alt="{{ receta.nombre }}">
+                <div class="card-body text-center">
+                  <h5 class="fw-bold">{{ receta.nombre }}</h5>
+                  <p class="text-muted mb-1">Tiempo: {{ receta.tiempo }} min | {{ receta.calorias }} kcal</p>
+                  <p class="small">Dificultad: {{ receta.dificultad }}</p>
+                </div>
+            </a>
             </div>
-          </div>
         </div>
-      {% endfor %}
+    {% endfor %}
     {% else %}
-      <p class="text-center mt-4">No se encontraron recetas con esos filtros.</p>
+        <div class="text-center mt-4">
+            <h5 class="text-muted">No se encontraron recetas.</h5>
+        </div>
     {% endif %}
   </div>
 
 
   <div class="mt-5 text-center">
-    <h4 class="fw-bold mb-3">Recetas para Principiantes </h4>
+    <h4 class="fw-bold mb-3">Recetas para Principiantes</h4>
     <p class="text-muted mb-4">Pocos ingredientes y pasos sencillos.</p>
     <img src="{{ url_for('static', filename='img/principiantes.jpg') }}" alt="Recetas para principiantes" class="img-fluid rounded mb-4">
+
     <div class="d-flex flex-wrap justify-content-center gap-3">
       <button class="btn btn-outline-warning text-dark">Huevos Revueltos con Espinaca</button>
       <button class="btn btn-outline-warning text-dark">Avena con Frutas</button>
@@ -96,3 +95,4 @@
 
 </div>
 {% endblock %}
+

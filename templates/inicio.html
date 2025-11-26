@@ -6,7 +6,6 @@
 
 <div class="container mt-5">
 
-  <!-- Título principal -->
   <div class="text-center mb-4">
     <h1 class="fw-bold">NutriApp – Tu Guía Nutricional Inteligente</h1>
     <p class="text-muted">Aprende, mejora tu salud y toma decisiones inteligentes sobre tu nutrición.</p>
@@ -15,7 +14,7 @@
 
   <div class="row">
     <div class="col-4">
-      <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+      <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end sticky-top">
         <nav class="nav nav-pills flex-column">
           <a class="nav-link" href="#item-1">¿Cómo leer las etiquetas nutricionales?</a>
           <nav class="nav nav-pills flex-column">
@@ -37,47 +36,167 @@
 
     <div class="col-8">
       <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
-        
+     
         <div id="item-1">
           <h4>¿Cómo leer las etiquetas nutricionales?</h4>
-          <p>Aprende a interpretar calorías, grasas, carbohidratos, proteínas y el tamaño de porción.</p>
+          <img src="{{ url_for('static', filename='inic/etiqueta.jpg') }}" width="250" class="mb-3">
+          <p>
+            Las etiquetas nutricionales te permiten tomar decisiones informadas sobre los alimentos que consumes.
+            Aprender a interpretarlas te ayuda a comparar productos, identificar ingredientes de riesgo y controlar 
+            mejor tus porciones.
+          </p>
+          <p>
+            Elementos clave a revisar:
+          </p>
+          <ul>
+            <li><b>Tamaño de porción:</b> todos los valores dependen de este número.</li>
+            <li><b>Calorías por porción:</b> indican la energía que el alimento aporta.</li>
+            <li><b>Nutrientes críticos:</b> grasas saturadas, grasas trans, sodio y azúcares añadidos.</li>
+            <li><b>Nutrientes recomendados:</b> fibra, proteínas, vitaminas y minerales.</li>
+            <li><b>% valor diario:</b> menos de 5% es bajo, más de 20% es alto.</li>
+          </ul>
         </div>
+
         <div id="item-1-1">
           <h5>Calorías y macronutrientes</h5>
-          <p>Detalles sobre cómo calcular y entender las calorías y los macronutrientes en cada alimento.</p>
+          <img src="{{ url_for('static', filename='inic/macros.jpg') }}" width="250" class="mb-3">
+          <p>
+            Las calorías provienen de tres macronutrientes esenciales: carbohidratos, proteínas y grasas. Cada uno cumple una 
+            función importante en el cuerpo.
+          </p>
+          <ul>
+            <li><b>Carbohidratos:</b> principal fuente de energía. 4 kcal por gramo.</li>
+            <li><b>Proteínas:</b> ayudan a construir y reparar tejidos. 4 kcal por gramo.</li>
+            <li><b>Grasas:</b> soporte hormonal y absorción de vitaminas. 9 kcal por gramo.</li>
+          </ul>
+          <p>
+            Elegir carbohidratos complejos, proteínas magras y grasas saludables mejora la calidad de la dieta.
+          </p>
         </div>
+
+
         <div id="item-1-2">
           <h5>Tamaño de porción</h5>
-          <p>La importancia de consumir las porciones correctas y cómo leerlas en las etiquetas.</p>
+          <img src="{{ url_for('static', filename='inic/porcion.jpg') }}" width="250" class="mb-3">
+          <p>
+            El tamaño de porción determina cuántas calorías y nutrientes realmente consumes. 
+            Muchos productos muestran múltiples porciones por empaque, lo que puede llevar a comer 
+            más sin darte cuenta.
+          </p>
+          <p>
+            Debes revisar:
+          </p>
+          <ul>
+            <li>Cantidad por porción (gramos o unidades).</li>
+            <li>Número de porciones por envase.</li>
+            <li>Si realmente consumes más de una porción.</li>
+          </ul>
         </div>
+
 
         <div id="item-2">
           <h4>Mitos y verdades sobre las dietas de moda</h4>
-          <p>Descubre qué dietas realmente funcionan y cuáles pueden ser peligrosas para tu salud.</p>
+          <img src="{{ url_for('static', filename='inic/dietas.jpg') }}" width="250" class="mb-3">
+          <p>Existen muchas dietas populares, pero no todas están respaldadas por evidencia científica.</p>
+
+          <ul>
+            <li><b>Mito:</b> Las dietas detox limpian el cuerpo.  
+                <b>Verdad:</b> El hígado y los riñones ya realizan esa función.</li>
+
+            <li><b>Mito:</b> La dieta keto es ideal para cualquiera.  
+                <b>Verdad:</b> Puede ser riesgosa para personas con diabetes o problemas renales.</li>
+
+            <li><b>Mito:</b> Saltarse comidas ayuda a bajar de peso.  
+                <b>Verdad:</b> Puede provocar rebote y atracones.</li>
+
+            <li><b>Mito:</b> Comer tarde engorda.  
+                <b>Verdad:</b> Engorda el exceso calórico, no la hora.</li>
+
+            <li><b>Mito:</b> Los suplementos reemplazan alimentos reales.  
+                <b>Verdad:</b> No aportan fibra ni antioxidantes naturales.</li>
+          </ul>
         </div>
 
         <div id="item-3">
           <h4>Guía rápida sobre macronutrientes</h4>
-          <p>Comprende la función de carbohidratos, proteínas y grasas en la nutrición diaria.</p>
+          <img src="{{ url_for('static', filename='inic/macronutrientes.jpg') }}" width="250" class="mb-3">
+          <p>
+            Los macronutrientes son esenciales para la energía, la recuperación muscular y el funcionamiento del cuerpo. 
+            Deben estar equilibrados diariamente.
+          </p>
+          <ul>
+            <li><b>Carbohidratos:</b> 45–65% de la energía diaria.</li>
+            <li><b>Proteínas:</b> 15–30% según actividad física.</li>
+            <li><b>Grasas saludables:</b> 20–35% del consumo total.</li>
+          </ul>
         </div>
+
+
         <div id="item-3-1">
           <h5>Funciones de los carbohidratos</h5>
-          <p>Proporcionan energía y son esenciales para el funcionamiento del cuerpo.</p>
+          <img src="{{ url_for('static', filename='inic/carbohidratos.jpg') }}" width="250" class="mb-3">
+          <p>
+            Los carbohidratos son la fuente principal de energía y el cerebro depende de ellos para funcionar correctamente.
+          </p>
+          <ul>
+            <li>Mantienen estables los niveles de glucosa.</li>
+            <li>Mejoran el rendimiento físico.</li>
+            <li>Aportan fibra que mejora la digestión.</li>
+            <li>Son necesarios para el funcionamiento del sistema nervioso.</li>
+          </ul>
         </div>
+
+
         <div id="item-3-2">
           <h5>Funciones de proteínas y grasas</h5>
-          <p>Las proteínas ayudan a construir tejidos y las grasas apoyan la absorción de vitaminas y energía.</p>
+          <img src="{{ url_for('static', filename='inic/proteinasgrasas.jpg') }}" width="250" class="mb-3">
+          <p><b>Proteínas:</b></p>
+          <ul>
+            <li>Forman músculos y tejidos.</li>
+            <li>Producen hormonas y enzimas.</li>
+            <li>Aumentan la saciedad.</li>
+            <li>Fortalecen el sistema inmune.</li>
+          </ul>
+
+          <p><b>Grasas saludables:</b></p>
+          <ul>
+            <li>Protegen órganos.</li>
+            <li>Favorecen la memoria y el rendimiento cerebral.</li>
+            <li>Ayudan a absorber vitaminas A, D, E y K.</li>
+            <li>Reducen inflamación.</li>
+          </ul>
         </div>
 
         <div id="item-4">
           <h4>La importancia de la hidratación</h4>
-          <p>Beneficios del agua, cómo evitar la deshidratación y cuánta agua necesitas al día.</p>
+          <img src="{{ url_for('static', filename='inic/agua.jpg') }}" width="250" class="mb-3">
+          <p>
+            El agua es esencial para todas las funciones del cuerpo. Mantiene la temperatura, transporta nutrientes y 
+            mejora el rendimiento físico y mental.
+          </p>
+          <ul>
+            <li>Previene dolores de cabeza.</li>
+            <li>Evita la deshidratación.</li>
+            <li>Mejora la digestión.</li>
+            <li>Ayuda a regular el apetito.</li>
+          </ul>
         </div>
 
         <div id="item-5">
           <h4>La fibra y su impacto en la digestión</h4>
-          <p>Cómo mejora la salud intestinal, regula el azúcar y ayuda al control del peso.</p>
+          <img src="{{ url_for('static', filename='inic/fibra.jpg') }}" width="250" class="mb-3">
+          <p>
+            La fibra es fundamental para la salud digestiva y metabólica.
+          </p>
+          <ul>
+            <li>Regula el tránsito intestinal.</li>
+            <li>Controla los niveles de azúcar en sangre.</li>
+            <li>Reduce el colesterol LDL.</li>
+            <li>Ayuda a controlar el peso al aumentar la saciedad.</li>
+            <li>Alimenta bacterias buenas del intestino.</li>
+          </ul>
         </div>
+
 
       </div>
     </div>
