@@ -26,7 +26,9 @@ diccionario_datos = {
     "disgustos": {"tipo": "Texto (string)", "descripcion": "Alimentos que no gustan", "obligatorio": False},
     "cocina": {"tipo": "Texto (string)", "descripcion": "Nivel de experiencia en cocina", "obligatorio": True}
 }
-usuarios_registrados = {}
+usuarios_registrados = {
+    
+}
 
 lista_recetas = [
     {
@@ -186,7 +188,7 @@ def inicio():
 
 @app.route('/plantillas')
 def plantillas():
-    return render_template('plantillas_desc.html')
+    return render_template('plantillas.html')
 
 
 @app.route('/registro', methods=['GET', 'POST'])
