@@ -1,224 +1,162 @@
 {% extends "base.html" %}
 
-{% block title %}Inicio{% endblock %}
+{% block title %}Inicio | NutriApp{% endblock %}
 
 {% block contenido %}
 
 <div class="container mt-5">
 
-  <div class="text-center mb-4">
-    <h1 class="fw-bold">NutriApp – Tu Guía Nutricional </h1>
-    <p class="text-muted">Aprende, mejora tu salud y toma decisiones inteligentes sobre tu nutrición con información clara, práctica y adaptada a tu estilo de vida. Conocer cómo funcionan los alimentos y cómo interpretarlos te permitirá transformar tu energía, tu bienestar y tu calidad de vida día a día.
-
-Comprender aspectos esenciales como leer etiquetas nutricionales, identificar macronutrientes, conocer mitos comunes, o entender la importancia de la hidratación y la fibra, te ayudará a elegir mejor lo que consumes y cuidar tu salud de forma consciente..</p>
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-warning">NutriApp – Tu Guía Nutricional</h1>
+    <p class="text-muted fs-5">
+      Aprende, mejora tu salud y toma decisiones inteligentes sobre tu nutrición con información clara,
+      práctica y adaptada a tu estilo de vida. Conocer cómo funcionan los alimentos te permitirá transformar
+      tu energía, tu bienestar y tu calidad de vida día a día.
+    </p>
   </div>
 
-
-
-
-
   <div class="row">
-    <div class="col-4">
-      <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end sticky-top">
-        <nav class="nav nav-pills flex-column">
-          <a class="nav-link" href="#item-1">¿Cómo leer las etiquetas nutricionales?</a>
-          <nav class="nav nav-pills flex-column">
-            <a class="nav-link ms-3 my-1" href="#item-1-1">Calorías y macronutrientes</a>
-            <a class="nav-link ms-3 my-1" href="#item-1-2">Tamaño de porción</a>
+
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm border-0 sticky-top">
+        <div class="card-body">
+          <h5 class="fw-bold text-warning text-center mb-3">Contenido</h5>
+
+          <nav id="navbar-info" class="nav nav-pills flex-column">
+
+            <a class="nav-link" href="#item-1">Leer etiquetas nutricionales</a>
+
+            <a class="nav-link ms-3" href="#item-1-1">Calorías y macronutrientes</a>
+            <a class="nav-link ms-3" href="#item-1-2">Tamaño de porción</a>
+
+            <a class="nav-link" href="#item-2">Mitos de dietas</a>
+
+            <a class="nav-link" href="#item-3">Guía de macronutrientes</a>
+
+            <a class="nav-link ms-3" href="#item-3-1">Funciones carbohidratos</a>
+            <a class="nav-link ms-3" href="#item-3-2">Proteínas y grasas</a>
+
+            <a class="nav-link" href="#item-4">Hidratación</a>
+            <a class="nav-link" href="#item-5">Fibra</a>
+
           </nav>
-          <a class="nav-link" href="#item-2">Mitos y verdades sobre las dietas de moda</a>
-          <a class="nav-link" href="#item-3">Guía rápida sobre macronutrientes</a>
-          <nav class="nav nav-pills flex-column">
-            <a class="nav-link ms-3 my-1" href="#item-3-1">Funciones de los carbohidratos</a>
-            <a class="nav-link ms-3 my-1" href="#item-3-2">Funciones de proteínas y grasas</a>
-          </nav>
-          <a class="nav-link" href="#item-4">La importancia de la hidratación</a>
-          <a class="nav-link" href="#item-5">La fibra y su impacto en la digestión</a>
-        </nav>
-      </nav>
+
+        </div>
+      </div>
     </div>
 
 
-    <div class="col-8">
-      <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
-        <div id="item-1">
-          <h4>¿Cómo leer las etiquetas nutricionales?</h4>
-          <img src="{{ url_for('static', filename='inic/etiqueta.jpg') }}" width="250" class="mb-3">
-          <p>
-            Las etiquetas nutricionales te permiten tomar decisiones informadas sobre los alimentos que consumes.
-            Aprender a interpretarlas te ayuda a comparar productos, identificar ingredientes de riesgo y controlar 
-            mejor tus porciones.
-          </p>
-          <p>
-            Elementos clave a revisar:
-          </p>
+    <div class="col-md-8">
+        <div id="item-1" class="mb-5">
+          <h3 class="fw-bold text-warning">¿Cómo leer las etiquetas nutricionales?</h3>
+          <img src="{{ url_for('static', filename='inic/etiqueta.jpg') }}" class="rounded shadow mb-3" width="280">
+
+          <p>Las etiquetas nutricionales te permiten tomar decisiones informadas y comparar productos.</p>
+
           <ul>
-            <li><b>Tamaño de porción:</b> todos los valores dependen de este número.</li>
-            <li><b>Calorías por porción:</b> indican la energía que el alimento aporta.</li>
-            <li><b>Nutrientes críticos:</b> grasas saturadas, grasas trans, sodio y azúcares añadidos.</li>
-            <li><b>Nutrientes recomendados:</b> fibra, proteínas, vitaminas y minerales.</li>
+            <li><b>Tamaño de porción:</b> todo depende de este número.</li>
+            <li><b>Calorías por porción.</b></li>
+            <li><b>Nutrientes críticos:</b> grasas saturadas, trans, sodio, azúcares.</li>
+            <li><b>Nutrientes recomendados:</b> fibra, vitaminas y minerales.</li>
             <li><b>% valor diario:</b> menos de 5% es bajo, más de 20% es alto.</li>
           </ul>
         </div>
 
-        <div id="item-1-1">
-          <h5>Calorías y macronutrientes</h5>
-          <img src="{{ url_for('static', filename='inic/macros.jpg') }}" width="250" class="mb-3">
-          <p>
-            Las calorías provienen de tres macronutrientes esenciales: carbohidratos, proteínas y grasas. Cada uno cumple una 
-            función importante en el cuerpo.
-          </p>
+        <div id="item-1-1" class="mb-5">
+          <h4 class="fw-bold text-warning">Calorías y macronutrientes</h4>
+          <img src="{{ url_for('static', filename='inic/macros.jpg') }}" class="rounded shadow mb-3" width="280">
+
           <ul>
-            <li><b>Carbohidratos:</b> principal fuente de energía. 4 kcal por gramo.</li>
-            <li><b>Proteínas:</b> ayudan a construir y reparar tejidos. 4 kcal por gramo.</li>
-            <li><b>Grasas:</b> soporte hormonal y absorción de vitaminas. 9 kcal por gramo.</li>
+            <li><b>Carbohidratos:</b> 4 kcal/g</li>
+            <li><b>Proteínas:</b> 4 kcal/g</li>
+            <li><b>Grasas:</b> 9 kcal/g</li>
           </ul>
-          <p>
-            Elegir carbohidratos complejos, proteínas magras y grasas saludables mejora la calidad de la dieta.
-          </p>
         </div>
 
+        <div id="item-1-2" class="mb-5">
+          <h4 class="fw-bold text-warning">Tamaño de porción</h4>
+          <img src="{{ url_for('static', filename='inic/porcion.jpg') }}" class="rounded shadow mb-3" width="280">
 
-        <div id="item-1-2">
-          <h5>Tamaño de porción</h5>
-          <img src="{{ url_for('static', filename='inic/porcion.jpg') }}" width="250" class="mb-3">
-          <p>
-            El tamaño de porción determina cuántas calorías y nutrientes realmente consumes. 
-            Muchos productos muestran múltiples porciones por empaque, lo que puede llevar a comer 
-            más sin darte cuenta.
-          </p>
-          <p>
-            Debes revisar:
-          </p>
           <ul>
-            <li>Cantidad por porción (gramos o unidades).</li>
+            <li>Cantidad por porción.</li>
             <li>Número de porciones por envase.</li>
-            <li>Si realmente consumes más de una porción.</li>
+            <li>Cuánto consumes realmente.</li>
           </ul>
         </div>
 
+        <div id="item-2" class="mb-5">
+          <h3 class="fw-bold text-warning">Mitos y verdades sobre dietas</h3>
 
-        <div id="item-2">
-          <h4>Mitos y verdades sobre las dietas de moda</h4>
-          <img src="{{ url_for('static', filename='inic/dietas.jpg') }}" width="250" class="mb-3">
-          <p>Existen muchas dietas populares, pero no todas están respaldadas por evidencia científica.</p>
+          <img src="{{ url_for('static', filename='inic/dietas.jpg') }}" class="rounded shadow mb-3" width="280">
 
           <ul>
-            <li><b>Mito:</b> Las dietas detox limpian el cuerpo.  
-                <b>Verdad:</b> El hígado y los riñones ya realizan esa función.</li>
-
-            <li><b>Mito:</b> La dieta keto es ideal para cualquiera.  
-                <b>Verdad:</b> Puede ser riesgosa para personas con diabetes o problemas renales.</li>
-
-            <li><b>Mito:</b> Saltarse comidas ayuda a bajar de peso.  
-                <b>Verdad:</b> Puede provocar rebote y atracones.</li>
-
-            <li><b>Mito:</b> Comer tarde engorda.  
-                <b>Verdad:</b> Engorda el exceso calórico, no la hora.</li>
-
-            <li><b>Mito:</b> Los suplementos reemplazan alimentos reales.  
-                <b>Verdad:</b> No aportan fibra ni antioxidantes naturales.</li>
+            <li><b>Mito:</b> Las dietas detox limpian el cuerpo. <b>Realidad:</b> El hígado ya lo hace.</li>
+            <li><b>Mito:</b> Saltar comidas adelgaza. <b>Realidad:</b> provoca rebotes.</li>
           </ul>
         </div>
 
-        <div id="item-3">
-          <h4>Guía rápida sobre macronutrientes</h4>
-          <img src="{{ url_for('static', filename='inic/macronutrientes.jpg') }}" width="250" class="mb-3">
-          <p>
-            Los macronutrientes son esenciales para la energía, la recuperación muscular y el funcionamiento del cuerpo. 
-            Deben estar equilibrados diariamente.
-          </p>
+        <div id="item-3" class="mb-5">
+          <h3 class="fw-bold text-warning">Guía rápida sobre macronutrientes</h3>
+          <img src="{{ url_for('static', filename='inic/macronutrientes.jpg') }}" class="rounded shadow mb-3" width="280">
+
           <ul>
-            <li><b>Carbohidratos:</b> 45–65% de la energía diaria.</li>
-            <li><b>Proteínas:</b> 15–30% según actividad física.</li>
-            <li><b>Grasas saludables:</b> 20–35% del consumo total.</li>
+            <li>Carbohidratos: 45–65%.</li>
+            <li>Proteínas: 15–30%.</li>
+            <li>Grasas saludables: 20–35%.</li>
           </ul>
         </div>
 
+        <div id="item-3-1" class="mb-5">
+          <h4 class="fw-bold text-warning">Funciones de los carbohidratos</h4>
+          <img src="{{ url_for('static', filename='inic/carbohidratos.jpg') }}" class="rounded shadow mb-3" width="260">
 
-        <div id="item-3-1">
-          <h5>Funciones de los carbohidratos</h5>
-          <img src="{{ url_for('static', filename='inic/carbohidratos.jpg') }}" width="250" class="mb-3">
-          <p>
-            Los carbohidratos son la fuente principal de energía y el cerebro depende de ellos para funcionar correctamente.
-          </p>
           <ul>
-            <li>Mantienen estables los niveles de glucosa.</li>
-            <li>Mejoran el rendimiento físico.</li>
-            <li>Aportan fibra que mejora la digestión.</li>
-            <li>Son necesarios para el funcionamiento del sistema nervioso.</li>
+            <li>Principal fuente de energía.</li>
+            <li>Aportan fibra.</li>
+            <li>Mantienen glucosa estable.</li>
           </ul>
         </div>
 
+        <div id="item-3-2" class="mb-5">
+          <h4 class="fw-bold text-warning">Proteínas y grasas</h4>
 
-        <div id="item-3-2">
-          <h5>Funciones de proteínas y grasas</h5>
-          <img src="{{ url_for('static', filename='inic/proteinasgrasas.jpg') }}" width="250" class="mb-3">
+          <img src="{{ url_for('static', filename='inic/proteinasgrasas.jpg') }}" class="rounded shadow mb-3" width="260">
+
           <p><b>Proteínas:</b></p>
           <ul>
-            <li>Forman músculos y tejidos.</li>
-            <li>Producen hormonas y enzimas.</li>
-            <li>Aumentan la saciedad.</li>
-            <li>Fortalecen el sistema inmune.</li>
+            <li>Forman músculos.</li>
+            <li>Aumentan saciedad.</li>
           </ul>
 
           <p><b>Grasas saludables:</b></p>
           <ul>
             <li>Protegen órganos.</li>
-            <li>Favorecen la memoria y el rendimiento cerebral.</li>
-            <li>Ayudan a absorber vitaminas A, D, E y K.</li>
-            <li>Reducen inflamación.</li>
+            <li>Absorben vitaminas.</li>
           </ul>
         </div>
 
-        <div id="item-4">
-          <h4>La importancia de la hidratación</h4>
-          <img src="{{ url_for('static', filename='inic/agua.jpg') }}" width="250" class="mb-3">
-          <p>
-            El agua es esencial para todas las funciones del cuerpo. Mantiene la temperatura, transporta nutrientes y 
-            mejora el rendimiento físico y mental.
-          </p>
-          <ul>
-            <li>Previene dolores de cabeza.</li>
-            <li>Evita la deshidratación.</li>
-            <li>Mejora la digestión.</li>
-            <li>Ayuda a regular el apetito.</li>
-          </ul>
+        <div id="item-4" class="mb-5">
+          <h3 class="fw-bold text-warning">La importancia de la hidratación</h3>
+          <img src="{{ url_for('static', filename='inic/agua.jpg') }}" class="rounded shadow mb-3" width="260">
         </div>
 
-        <div id="item-5">
-          <h4>La fibra y su impacto en la digestión</h4>
-          <img src="{{ url_for('static', filename='inic/fibra.jpg') }}" width="250" class="mb-3">
-          <p>
-            La fibra es fundamental para la salud digestiva y metabólica.
-          </p>
-          <ul>
-            <li>Regula el tránsito intestinal.</li>
-            <li>Controla los niveles de azúcar en sangre.</li>
-            <li>Reduce el colesterol LDL.</li>
-            <li>Ayuda a controlar el peso al aumentar la saciedad.</li>
-            <li>Alimenta bacterias buenas del intestino.</li>
-          </ul>
+        <div id="item-5" class="mb-5">
+          <h3 class="fw-bold text-warning">La fibra y su impacto</h3>
+          <img src="{{ url_for('static', filename='inic/fibra.jpg') }}" class="rounded shadow mb-3" width="260">
         </div>
-
 
       </div>
     </div>
+
   </div>
 
-
   <div class="text-center mt-5">
-    <h3 class="fw-bold">Planillas de ejercicios básicos para complementar la nutrición.</h3>
-    
- 
-<div class="text-center mt-4">
-  <a href="https://1drv.ms/w/c/523c17b85c45ac12/IQBVi3yH6C7-T45KGN6dV6fwAQMMRPsLgGmcgRqefCJxrJk?e=djAUcL" 
-     class="btn btn-primary btn-lg" 
-     download>
-     Descargar documento
-  </a>
-</div>
-
+    <h3 class="fw-bold">¿Listo para mejorar tus hábitos?</h3>
+    <p>Explora más recursos, registra tus comidas y controla tu progreso.</p>
+    <a href="{{ url_for('sesion') }}" 
+     class="btn btn-warning fw-bold px-4 py-2 rounded-pill">
+     Comenzar ahora</a>
+  </div>
 
 </div>
 
