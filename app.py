@@ -27,8 +27,13 @@ diccionario_datos = {
     "cocina": {"tipo": "Texto (string)", "descripcion": "Nivel de experiencia en cocina", "obligatorio": True}
 }
 usuarios_registrados = {
-    
+    "medina@gmail.com": {
+        "nombre": "oscar adrian",
+        "correo": "medina@gmail.com",
+        "contraseña": "12345678"
+    }
 }
+
 
 lista_recetas = [
     {
@@ -200,7 +205,7 @@ def registro():
             return redirect(url_for('registro'))
         usuarios_registrados[correo] = {key: request.form.get(key) for key in diccionario_datos}
         flash("Registro exitoso, inicia sesión ahora", "exito")
-        return redirect(url_for('sesion'))
+        return redirect(url_for('iniciar_sesion'))
     return render_template('registro.html')
 
 @app.route("/recetas")
@@ -260,28 +265,41 @@ def herramientas():
     return render_template('herramientas.html')
 
 @app.route('/inicia_sesion', methods=['GET', 'POST'])
-def sesion():
+def iniciar_sesion():
     if request.method == 'POST':
-        correo = request.form.get("correo").lower()  
-        contraseña = request.form.get("contraseña") 
-        usuario = usuarios_registrados.get(correo)  
-        
-        if usuario and usuario.get("contraseña") == contraseña:
-            session["correo"] = correo 
-            flash(f"Bienvenido {usuario.get('nombre')}!", "exito")  
-            return redirect(url_for('inicio')) 
-        else:
-            flash("Correo o contraseña incorrectos", "danger")  
-            return redirect(url_for('sesion'))  
-    
-    return render_template('login.html') 
+        correo = request.form.get("correo", "").lower()
+        contraseña = request.form.get("contraseña")
+        usuario = usuarios_registrados.get(correo)
 
+        if usuario and usuario.get("contraseña") == contraseña:
+            session["correo"] = correo
+            session["logueado"] = True
+            session["usuario"] = usuario.get("nombre", correo)
+            flash(f"Bienvenido {usuario.get('nombre')}!", "success")
+            return redirect(url_for('inicio'))
+        else:
+            flash("Correo o contraseña incorrectos", "danger")
+            return redirect(url_for('iniciar_sesion'))
+
+    return render_template("login.html")
+
+@app.route('/perfil')
+def perfil():
+    if not session.get("logueado"):
+        flash("Debes iniciar sesión para ver tu perfil.", "warning")
+        return redirect(url_for('iniciar_sesion'))
+
+    correo = session.get("correo")
+    usuario = usuarios_registrados.get(correo)
+    return render_template("perfil.html", usuario=usuario)
 
 @app.route('/logout')
 def logout():
-    session.pop("usuario", None)
-    flash("Has cerrado sesión correctamente.", "exito")
-    return redirect(url_for('sesion'))
+    session.clear()
+    flash('Has cerrado sesión correctamente', 'info')
+    return redirect(url_for('iniciar_sesion'))
+
+
 
 @app.route('/imc', methods=['GET', 'POST'])
 def imc():

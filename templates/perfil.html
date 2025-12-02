@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Perfil de Usuario{% endblock %}
+
+{% block contenido %}
+<div class="container my-5">
+  <div class="card p-4 shadow">
+    <h3 class="text-center fw-bold text-warning">Perfil</h3>
+
+    {% if usuario %}
+      <ul class="list-group list-group-flush mt-3">
+        <li class="list-group-item"><strong>Nombre:</strong> {{ usuario.nombre }}</li>
+        <li class="list-group-item"><strong>Apellidos:</strong> {{ usuario.apellidos }}</li>
+        <li class="list-group-item"><strong>Correo:</strong> {{ usuario.correo }}</li>
+        <li class="list-group-item"><strong>Edad:</strong> {{ usuario.edad }}</li>
+        <li class="list-group-item"><strong>Peso:</strong> {{ usuario.peso }} kg</li>
+        <li class="list-group-item"><strong>Altura:</strong> {{ usuario.altura }} cm</li>
+        <li class="list-group-item"><strong>Nivel de actividad:</strong> {{ usuario.nivel_actividad }}</li>
+        <li class="list-group-item"><strong>Objetivo:</strong> {{ usuario.objetivo }}</li>
+        <li class="list-group-item"><strong>Dieta:</strong> {{ usuario.dieta }}</li>
+      </ul>
+    {% else %}
+      <p class="mt-3">No se encontró información de usuario.</p>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}
